@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Handling the Focus Event</title>
+</head>
+<body>
+    <script>
+        function highlightInput(elm){
+            elm.style.background = "yellow";
+        }    
+    </script>
+    <input type="text" onfocus="highlightInput(this)">
+    <button type="button">Button</button>
+</body>
+</html>

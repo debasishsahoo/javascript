@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Logical Operators</title>
+</head>
+<body>
+    <script>
+    var year = 2018;
+ 
+    // Leap years are divisible by 400 or by 4 but not 100
+    if((year % 400 == 0) || ((year % 100 != 0) && (year % 4 == 0))){
+        document.write(year + " is a leap year.");
+    } else{
+        document.write(year + " is not a leap year.");
+    }
+    </script>
+</body>
+</html>
