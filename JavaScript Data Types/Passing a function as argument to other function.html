@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Function Passed as Argument to Other Function</title>
+</head>
+<body>
+    <script>
+    function createGreeting(name){
+        return "Hello, " + name;
+    }
+    function displayGreeting(greetingFunction, userName){
+        return greetingFunction(userName);
+    }
+     
+    var result = displayGreeting(createGreeting, "Peter");
+    document.write(result); // Output: Hello, Peter
+    </script>
+</body>
+</html>

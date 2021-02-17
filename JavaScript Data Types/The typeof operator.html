@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript typeof Operator</title>
+</head>
+<body>
+    <script>
+    // Numbers
+    document.write(typeof 15 + "<br>");  // Prints: "number"
+    document.write(typeof 42.7 + "<br>");  // Prints: "number"
+    document.write(typeof 2.5e-4 + "<br>");  // Prints: "number"
+    document.write(typeof Infinity + "<br>");  // Prints: "number"
+    document.write(typeof NaN + "<br>");  // Prints: "number". Despite being "Not-A-Number"
+     
+    // Strings
+    document.write(typeof '' + "<br>");  // Prints: "string"
+    document.write(typeof 'hello' + "<br>");  // Prints: "string"
+    document.write(typeof '12' + "<br>");  // Prints: "string". Number within quotes is document.write(typeof string
+     
+    // Booleans
+    document.write(typeof true + "<br>");  // Prints: "boolean"
+    document.write(typeof false + "<br>");  // Prints: "boolean"
+     
+    // Undefined
+    document.write(typeof undefined + "<br>");  // Prints: "undefined"
+    document.write(typeof undeclaredVariable + "<br>"); // Prints: "undefined"
+     
+    // Null
+    document.write(typeof Null + "<br>");  // Prints: "object"
+     
+    // Objects
+    document.write(typeof {name: "John", age: 18} + "<br>");  // Prints: "object"
+     
+    // Arrays
+    document.write(typeof [1, 2, 4] + "<br>");  // Prints: "object"
+     
+    // Functions
+    document.write(typeof function(){});  // Prints: "function"
+    </script>
+</body>
+</html>
