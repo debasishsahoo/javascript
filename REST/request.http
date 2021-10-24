@@ -5,6 +5,6 @@ POST http://jsonplaceholder.typicode.com/posts
 Content-Type: application/json
 
 {
-    "title":"New Post",
-    "body":"This is new Post."
+    "title":"New Post By Debasish",
+    "body":"This is new Post Debasish."
 }
