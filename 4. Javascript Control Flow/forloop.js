@@ -19,7 +19,7 @@ for (let j = 1; ; j += 2) {
 }
 
 //for loop without any expression
-let j = 1;
+j = 1;
 for (; ;) {
     if (j > 10) break;
     console.log(j);

@@ -25,3 +25,35 @@ console.log(temp) */
 
 /* const pi= 3.14;
 pi = 3.141; */
+
+
+//Varible Declaration for
+
+var a=2;
+console.log('a:', a)
+var a=3;
+console.log('a:', a)
+
+let b=5;
+console.log('b:', b)
+
+b=6;
+console.log('b:', b)
+
+const c=8;
+console.log('c:', c)
+
+c=9;
+console.log('c:', c)
+
+//ok
+d=5;
+console.log('d:', d)
+d=8
+console.log('d:', d)
+
+
+
+
+
+
