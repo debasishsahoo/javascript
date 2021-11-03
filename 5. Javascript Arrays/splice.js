@@ -39,7 +39,7 @@ let languages = ['C', 'C++', 'Java', 'JavaScript'];
 languages.splice(1, 1, 'Python');
 console.log(languages);
 
-languages.splice(2,1,'C#','Swift','Go');
+languages.splice(2, 1, 'C#', 'Swift', 'Go');
 console.log(languages);
 
 
