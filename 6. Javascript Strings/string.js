@@ -51,6 +51,7 @@ console.log(className);
  * ” + n
  * n.toString()
  */
+
 status = false;
 console.log('status:', status)
 str = status.toString();
@@ -58,3 +59,9 @@ console.log('str:', str)
 back = Boolean(str);
 console.log('back:', back)
 
+//Comparing strings
+let result = 'a' < 'b';
+console.log(result);
+
+result = 'a' < 'B';
+console.log(result);
