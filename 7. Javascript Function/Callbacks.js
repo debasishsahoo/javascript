@@ -19,7 +19,7 @@ console.log(numbers); */
 
 //Asynchronous callback functions
 
-function download(url, callback) {
+/* function download(url, callback) {
     setTimeout(() => {
         // script to download the picture here
         console.log(`Downloading ${url} ...`);
@@ -27,11 +27,12 @@ function download(url, callback) {
         // process the picture once it is completed
         callback(url);
     }, 3 * 1000);
-}
+} */
 
-function process(picture) {
+/* function process(picture) {
     console.log(`Processing ${picture}`);
 }
 
 let url = 'https://www.w3schools.com/html/pic_trulli.jpg';
 download(url, process);
+ */

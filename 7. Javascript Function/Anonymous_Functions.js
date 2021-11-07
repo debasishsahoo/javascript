@@ -18,29 +18,29 @@ console.log('a:', a) */
     console.log('Immediately invoked function execution');
 })(); */
 
-let person = {
+/* let person = {
     firstName: 'Debasish',
     lastName: 'Sahoo'
-};
+}; */
 
-(function () {
+/* (function () {
     console.log(`${person.firstName} ${person.lastName}`);
-})(person);
+})(person); */
 
 
-let show = function () {
+/* let show = function () {
     return ('Anonymous function');
 };
-console.log('show:', show())
+console.log('show:', show()) */
 
 //Arrow functions
 
 
-show = () => console.log('Anonymous function');
+/* show = () => console.log('Anonymous function');
 show();
 
 let add = function (a, b) {
     return a + b;
 };
 
-let add = (a, b)  => a + b;  
+let add = (a, b)  => a + b;  */ 

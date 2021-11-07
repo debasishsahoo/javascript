@@ -19,10 +19,7 @@ fullName = firstName + ' ' + 'Doe';
 console.log(fullName);
 
 // Extracting substrings
-str = "JavaScript String";
-console.log(str.substr(0, 10));
-console.log(str.substr(11, 6));
-console.log(str.substring(4, 10));
+ 
 
 //Locating substrings
 str = "This is a string";
