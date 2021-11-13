@@ -1,0 +1,66 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font: normal 100 100%/1.5 helvetica, arial, sans-serif;
+  perspective: 500px;
+}
+
+.tree {
+  position: relative;
+}
+.tree * {
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  height: 4.5vw;
+  bottom: -9vw;
+  transform: translateX(5%);
+  font-size: 0.95em;
+  text-align: center;
+  line-height: 4.5vw;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: #999;
+  color: #fff;
+  transition: all 0.3s;
+}
+.tree *:hover {
+  background: #27f;
+  border-color: black;
+}
+.tree *:hover::before {
+  background: black;
+}
+.tree *::before {
+  content: "";
+  position: absolute;
+  top: -4.5vw;
+  left: 50%;
+  transform: translate(-5%);
+  width: 2px;
+  height: calc(4.5vw - 1px);
+  background: inherit;
+}
+
+@media (max-width: 500px) {
+  .tree {
+    width: 175%;
+  }
+  .tree * {
+    height: 30px;
+    bottom: -60px;
+    line-height: 30px;
+  }
+  .tree *::before {
+    top: -30px;
+    height: 29px;
+  }
+}
+@media (max-width: 300px) {
+  .tree {
+    width: 250%;
+  }
+}

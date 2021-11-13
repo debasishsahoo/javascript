@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+</head>
+
+<body>
+
+
+    <button id="btn-click">Click Me</button>
+    <p id="txt">This text Will be change after click</p>
+    <table border="1">
+        <tr>
+            <td>Event Target ID:</td>
+            <td>
+                <p id="et1"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>Event Type:</td>
+            <td>
+                <p id="et2"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>Event Element:</td>
+            <td>
+                <p id="et3"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>Event Cords(x,y):</td>
+            <td>
+                <p id="et4"></p>
+            </td>
+        </tr>
+    </table>
+
+
+    <script>
+        var button = document.getElementById("btn-click");
+        button.addEventListener("click", function (event) {
+            document.getElementById("txt").innerHTML = "Now Button Clicked";
+            document.getElementById("et1").innerHTML = event.target.id;
+            document.getElementById("et2").innerHTML = event.type;
+            document.getElementById("et3").innerHTML = event.target.tagName;
+            document.getElementById("et4").innerHTML = event.clientX + "," + event.clientY;
+        }, false);
+    </script>
+
+</body>
+
+</html>

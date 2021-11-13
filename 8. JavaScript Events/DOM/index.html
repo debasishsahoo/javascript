@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+
+<body>
+    <h1>Event Types in JavaScript</h1>
+    <p>The DOM (Document Object Model) provides access to many events. They are as follows</p>
+    <ul>
+        <li>Mouse events</li>
+        <li>Touch events</li>
+        <li>Form events</li>
+        <li>Keyboard events</li>
+        <li>DOM / UI events</li>
+        <li>Media events</li>
+    </ul>
+
+    <article>
+        <h2>Mouse Events</h2>
+        <p>
+        <ol>
+            <li>click</li>
+            <li>mousedown</li>
+            <li>mouseout</li>
+            <li>mouseover</li>
+            <li>mouseup</li>
+            <li>mouseenter</li>
+            <li>mouseleave</li>
+            <li>mousemove</li>
+            <li>dblclick</li>
+        </ol>
+        </p>
+    </article>
+    <article>
+        <h2>UI Events</h2>
+        <p>
+        <ol>
+            <li>load</li>
+            <li>unload</li>
+            <li>reset</li>
+            <li>select</li>
+            <li>resize</li>
+            <li>scroll</li>
+            <li>change</li>
+        </ol>
+        </p>
+    </article>
+    <article>
+        <h2>Keyboard Events</h2>
+        <p>
+        <ol>
+            <li>keydown</li>
+            <li>keypress</li>
+            <li>keyup</li>
+        </ol>
+        </p>
+    </article>
+    <article>
+        <h2>Form Events</h2>
+        <p>
+        <ol>
+            <li>blur</li>
+            <li>change</li>
+            <li>focus</li>
+            <li>focusin</li>
+            <li>focusout</li>
+            <li>select</li>
+        </ol>
+        </p>
+    </article>
+    <article>
+        <h2>Media Events</h2>
+        <p>
+        <ol>
+            <li>abort</li>
+            <li>canplay</li>
+            <li>canplaythrough</li>
+            <li>durationchange</li>
+            <li>emptied</li>
+            <li>ended</li>
+            <li>error</li>
+            <li>loadeddata</li>
+            <li>loadedmetadata</li>
+            <li>loadstart</li>
+            <li>pause</li>
+            <li>play</li>
+            <li>playing</li>
+            <li>progress</li>
+            <li>ratechange</li>
+            <li>seeked</li>
+            <li>seeking</li>
+            <li>stalled</li>
+            <li>suspend</li>
+            <li>timeupdate</li>
+            <li>volumechange</li>
+            <li>waiting</li>
+        </ol>
+        </p>
+    </article>
+    <article>
+        <h2>Touch Events</h2>
+        <p>
+        <ol>
+            <li>touchcancel</li>
+            <li>touchend</li>
+            <li>touchmove</li>
+            <li>touchleave</li>
+            <li>touchstart</li>
+        </ol>
+        </p>
+    </article>
+    <table border="1">
+        <tr>
+            <th>Event</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>click</td>
+            <td>The click event is fired when the user clicks on an element.</td>
+        </tr>
+        <tr>
+            <td>mousedown</td>
+            <td>The mousedown event is fired when the user presses the mouse button over an element.</td>
+        </tr>
+        <tr>
+            <td>mouseout</td>
+            <td>The mouseout event is fired when the user moves the mouse pointer outside the boundaries of an element.
+            </td>
+        </tr>
+        <tr>
+            <td>mouseover</td>
+            <td>The mouseover event is fired when the user moves the mouse pointer over an element.</td>
+        </tr>
+        <tr>
+            <td>mouseup</td>
+            <td>The mouseup event is fired when the user releases the mouse button over an element.</td>
+        </tr>
+        <tr>
+            <td>mouseenter</td>
+            <td>The mouseenter event is fired when the user moves the mouse pointer from outside an element into the
+                interior of an element.</td>
+        </tr>
+        <tr>
+            <td>mouseleave</td>
+            <td>The mouseleave event is fired when the user moves the mouse pointer from the interior of an element to
+                outside the element's boundaries.</td>
+        </tr>
+        <tr>
+            <td>mousemove</td>
+            <td>The mousemove event is fired when the user moves the mouse over the document.</td>
+        </tr>
+        <tr>
+            <td>dblclick</td>
+            <td>The dblclick event is fired when the user double-clicks on an element.</td>
+        </tr>
+        <tr>
+            <td>load</td>
+            <td>The load event is fired when the browser has completed loading all the resources of a document.</td>
+
+        </tr>
+        <tr>
+            <td>unload</td>
+            <td>The unload event is fired when the document has been removed from a window or frame.</td>
+        </tr>
+        <tr>
+            <td>reset</td>
+            <td>The reset event is fired when a reset button is clicked.</td>
+        </tr>
+        <tr>
+            <td>select</td>
+            <td>The select event is fired when a user selects some text.</td>
+
+        </tr>
+        <tr>
+            <td>resize</td>
+            <td>The resize event is fired when a document view is resized.</td>
+        </tr>
+        <tr>
+            <td>scroll</td>
+            <td>The scroll event is fired when a document view is scrolled.</td>
+        </tr>
+        <tr>
+            <td>change</td>
+            <td>The change event is fired when a control loses the input focus and its value has been modified.</td>
+
+        </tr>
+        <tr>
+            <td>keydown</td>
+            <td>The keydown event is fired when a user presses a keyboard key.</td>
+        </tr>
+        <tr>
+            <td>keypress</td>
+            <td>The keypress event is fired when a user presses a keyboard key.</td>
+        </tr>
+        <tr>
+            <td>keyup</td>
+            <td>The keyup event is fired when a user releases a keyboard key.</td>
+        </tr>
+        <tr>
+            <td>blur</td>
+            <td>The blur event is fired when an element loses focus.</td>
+        </tr>
+        <tr>
+            <td>focus</td>
+            <td>The focus event is fired when an element receives focus.</td>
+        </tr>
+        <tr>
+            <td>focusin</td>
+            <td>The focusin event is fired when an element receives focus.</td>
+        </tr>
+        <tr>
+            <td>focusout</td>
+            <td>The focusout event is fired when an element loses focus.</td>
+        </tr>
+        <tr>
+            <td>select</td>
+            <td>The select event is fired when some text is selected.</td>
+        </tr>
+        <tr>
+            <td>abort</td>
+            <td>The abort event is fired when a request has been aborted.</td>
+        </tr>
+        <tr>
+            <td>canplay</td>
+            <td>The canplay event is fired when the browser can start playing the media.</td>
+        </tr>
+        <tr>
+            <td>canplaythrough</td>
+            <td>The canplaythrough event is fired when the browser can play through the media without stopping for
+                buffering.</td>
+        </tr>
+        <tr>
+            <td>durationchange</td>
+            <td>The durationchange event is fired when the duration of the media has been determined.</td>
+        </tr>
+        <tr>
+            <td>emptied</td>
+            <td>The emptied event is fired when the media has become empty; for example, this event is sent if the
+                media has already been loaded (or partially loaded), and the load() method is called to reload it.</td>
+        </tr>
+        <tr>
+            <td>ended</td>
+            <td>The ended event is fired when the media has reached the end (duration) and is no longer playing.</td>
+        </tr>
+        <tr>
+            <td>loadeddata</td>
+            <td>The loadeddata event is fired when the browser has loaded the current frame of the media.</td>
+        </tr>
+        <tr>
+            <td>loadedmetadata</td>
+            <td>The loadedmetadata event is fired when the browser has loaded meta data for the media.</td>
+        </tr>
+        <tr>
+            <td>loadstart</td>
+            <td>The loadstart event is fired when the browser starts looking for the media.</td>
+        </tr>
+        <tr>
+            <td>pause</td>
+            <td>The pause event is fired when the media is paused.</td>
+        </tr>
+        <tr>
+            <td>play</td>
+            <td>The play event is fired when the media starts to play.</td>
+        </tr>
+        <tr>
+            <td>playing</td>
+            <td>The playing event is fired when the media is playing.</td>
+
+        </tr>
+        <tr>
+            <td>progress</td>
+            <td>The progress event is fired when the browser is downloading the media data.</td>
+
+        </tr>
+        <tr>
+            <td>ratechange</td>
+            <td>The ratechange event is fired when the playing speed of the media has changed.</td>
+        </tr>
+        <tr>
+            <td>seeked</td>
+            <td>The seeked event is fired when the user is finished moving/skipping to a new position in the media.</td>
+        </tr>
+        <tr>
+            <td>seeking</td>
+            <td>The seeking event is fired when the user starts moving/skipping to a new position in the media.</td>
+        </tr>
+        <tr>
+            <td>stalled</td>
+            <td>The stalled event is fired when the browser is trying to get media data, but data is not available.</td>
+
+        </tr>
+        <tr>
+            <td>suspend</td>
+            <td>The suspend event is fired when the browser is intentionally not getting media data.</td>
+        </tr>
+        <tr>
+            <td>timeupdate</td>
+            <td>The timeupdate event is fired when the current playback position has changed.</td>
+        </tr>
+        <tr>
+            <td>volumechange</td>
+            <td>The volumechange event is fired when the volume has been changed.</td>
+        </tr>
+        <tr>
+            <td>waiting</td>
+            <td>The waiting event is fired when the media starts to buffer.</td>
+        </tr>
+        <tr>
+            <td>load</td>
+            <td>The load event is fired when the browser has completed loading all the resources of a document.</td>
+        </tr>
+        <tr>
+            <td>unload</td>
+            <td>The unload event is fired when the document has been removed from a window or frame.</td>
+        </tr>
+        <tr>
+            <td>beforeunload</td>
+            <td>The beforeunload event is fired when the document is about to be unloaded.</td>
+        </tr>
+        <tr>
+            <td>blur</td>
+            <td>The blur event is fired when an element loses focus.</td>
+        </tr>
+        <tr>
+            <td>change</td>
+            <td>The change event is fired when a control loses the input focus and its value has been modified.</td>
+        </tr>
+        <tr>
+            <td>click</td>
+            <td>The click event is fired when the user clicks on an element.</td>
+        </tr>
+        <tr>
+            <td>contextmenu</td>
+            <td>The contextmenu event is fired when the user right-clicks on an element.</td>
+        </tr>
+        <tr>
+            <td>dblclick</td>
+            <td>The dblclick event is fired when the user double-clicks on an element.</td>
+        </tr>
+        <tr>
+            <td>drag</td>
+            <td>The drag event is fired when an element or text selection is being dragged.</td>
+        </tr>
+        <tr>
+            <td>dragend</td>
+            <td>The dragend event is fired when a drag operation is being ended (by releasing a mouse button or
+                hitting the escape key).</td>
+        </tr>
+        <tr>
+            <td>dragenter</td>
+            <td>The dragenter event is fired when a dragged element or text selection enters a valid drop target.</td>
+        </tr>
+        <tr>
+            <td>dragleave</td>
+            <td>The dragleave event is fired when a dragged element or text selection leaves a valid drop target.</td>
+        </tr>
+        <tr>
+            <td>dragover</td>
+            <td>The dragover event is fired when an element or text selection is being dragged over a valid drop
+                target (every few hundred milliseconds).</td>
+        </tr>
+        <tr>
+            <td>dragstart</td>
+            <td>The dragstart event is fired when the user starts to drag an element or text selection.</td>
+        </tr>
+        <tr>
+            <td>drop</td>
+            <td>The drop event is fired when an element or text selection is dropped on a valid drop target.</td>
+        </tr>
+        <tr>
+            <td>focus</td>
+            <td>The focus event is fired when an element receives focus.</td>
+        </tr>
+        <tr>
+            <td>input</td>
+            <td>The input event is fired when the value of an element changes or the content of an element with the
+                attribute contenteditable is modified.</td>
+        </tr>
+        <tr>
+            <td>keydown</td>
+            <td>The keydown event is fired when the user presses a keyboard key.</td>
+        </tr>
+        <tr>
+            <td>keypress</td>
+            <td>The keypress event is fired when the user presses a key.</td>
+        </tr>
+        <tr>
+            <td>keyup</td>
+            <td>The keyup event is fired when the user releases a key.</td>
+        </tr>
+        <tr>
+            <td>mousedown</td>
+            <td>The mousedown event is fired when the user presses a mouse button.</td>
+        </tr>
+        <tr>
+            <td>mousemove</td>
+            <td>The mousemove event is fired when the user moves the mouse.</td>
+        </tr>
+        <tr>
+            <td>mouseout</td>
+            <td>The mouseout event is fired when the user moves the mouse out of the browser window.</td>
+        </tr>
+        <tr>
+            <td>mouseover</td>
+            <td>The mouseover event is fired when the user moves the mouse over a valid drop target.</td>
+        </tr>
+        <tr>
+            <td>mouseup</td>
+            <td>The mouseup event is fired when the user releases a mouse button.</td>
+        </tr>
+        <tr>
+            <td>mousewheel</td>
+            <td>The mousewheel event is fired when the user rolls the mouse wheel.</td>
+        </tr>
+        <tr>
+            <td>scroll</td>
+            <td>The scroll event is fired when the document is scrolled.</td>
+        </tr>
+        <tr>
+            <td>select</td>
+            <td>The select event is fired when some text is being selected.</td>
+        </tr>
+        <tr>
+            <td>submit</td>
+            <td>The submit event is fired when a form is submitted.</td>
+        </tr>
+        <tr>
+            <td>touchcancel</td>
+            <td>The touchcancel event is fired when a touch point is removed from the touch surface.</td>
+        </tr>
+        <tr>
+            <td>touchend</td>
+            <td>The touchend event is fired when a touch point is removed from the touch surface.</td>
+        </tr>
+        <tr>
+            <td>touchmove</td>
+            <td>The touchmove event is fired when a touch point is moved along the touch surface.</td>
+        </tr>
+        <tr>
+            <td>touchstart</td>
+            <td>The touchstart event is fired when a touch point is placed on the touch surface.</td>
+        </tr>
+        <tr>
+            <td>wheel</td>
+            <td>The wheel event is fired when the mouse wheel is rotated.</td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Method</td>
+                <td>Searches by</td>
+                <td>Can call on an element</td>
+                <td>Live</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>querySelector</td>
+                <td>CSS-selector</td>
+                <td>✔</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>querySelectorAll</td>
+                <td>CSS-selector</td>
+                <td>✔</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>getElementById</td>
+                <td>id</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>getElementsByName</td>
+                <td>name</td>
+                <td>-</td>
+                <td>✔</td>
+            </tr>
+            <tr>
+                <td>getElementsByTagName</td>
+                <td>tag or '*'</td>
+                <td>✔</td>
+                <td>✔</td>
+            </tr>
+            <tr>
+                <td>getElementsByClassName</td>
+                <td>class</td>
+                <td>✔</td>
+                <td>✔</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

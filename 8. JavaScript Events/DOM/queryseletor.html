@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector</title>
+</head>
+
+<body>
+    <h2 class="example">A heading with class="example"</h2>
+    <p class="example">A paragraph with class="example".</p>
+    <button onclick="OnlySelector()">Click Here</button>
+
+    <hr>
+
+    <h2 class="cls">A heading with class="cls"</h2>
+    <p class="cls">A paragraph with class="cls".</p>
+    <button onclick="SelectorAll()">Click Here</button>
+    <hr>
+
+    <ul>
+        <li>The</li>
+        <li>test</li>
+    </ul>
+    <ul>
+        <li>has</li>
+        <li>passed</li>
+    </ul>
+    <hr>
+    <!--matches-->
+    <a href="http://example.com/file.zip">Link 1</a>
+    <a href="http://ya.ru">Link 2</a>
+    <a href="http://1.com/file.zip">Link 3</a>
+    <a href="http://aa.au">Link 4</a>
+    <a href="http://2.com/file.zip">Link 5</a>
+    <a href="http://bb.ru">Link 6</a>
+    <hr>
+    <!--closest-->
+    <h1>Contents</h1>
+
+    <div class="contents">
+        <ul class="book">
+            <li class="chapter">Chapter 1</li>
+            <li class="chapter">Chapter 1</li>
+        </ul>
+    </div>
+
+
+    <script type="text/javascript">
+        OnlySelector = () => {
+            var x = document.querySelector(".example");
+            x.style.color = "red";
+        }
+
+        SelectorAll = () => {
+            var x = document.querySelectorAll(".cls");
+            for (var i = 0; i < x.length; i++) {
+                x[i].style.color = "blue";
+            }
+        }
+
+        let elements = document.querySelectorAll('ul > li:last-child');
+
+        for (let elem of elements) {
+            console.log(elem.innerHTML);
+        }
+        console.log('-------------matches---------------');
+        for (let elem of document.body.children) {
+            if (elem.matches('a[href$="zip"]')) {
+                console.log("The archive reference: " + elem.href);
+            }
+        }
+        console.log('--------------closest--------------');
+        let chapter = document.querySelector('.chapter');
+        let a = chapter.closest('.book');
+        console.log('a:', a)
+        let b = chapter.closest('.contents');
+        console.log('b:', b)
+        let c = chapter.closest('h1');
+        console.log('c:', c)
+
+
+
+    </script
+
+</body >
+
+</html >

@@ -1,0 +1,42 @@
+<html>
+
+<body>
+    <div>Begin</div>
+
+    <ul>
+        <li>Information</li>
+    </ul>
+
+    <div>End</div>
+
+    <script>
+        /**
+        //Process 1......
+        for (let i = 0; i < document.body.childNodes.length; i++) {
+            console.table(document.body.childNodes[i]);
+        }
+
+        //Process 2......
+        for (let node of document.body.childNodes) {
+            alert(node);
+        }
+
+        //Process 3......
+        for (let prop in document.body.childNodes) alert(prop);
+**/
+        //Process 4......
+        // parent of <body> is <html>
+        alert(document.body.parentNode === document.documentElement); // true
+
+        // after <head> goes <body>
+        alert(document.head.nextSibling); // HTMLBodyElement
+
+        // before <body> goes <head>
+        alert(document.body.previousSibling); // HTMLHeadElement
+
+        alert(document.documentElement.parentNode); // document
+        alert(document.documentElement.parentElement); // null
+    </script>
+</body>
+
+</html>

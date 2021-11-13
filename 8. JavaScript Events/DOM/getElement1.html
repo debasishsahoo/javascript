@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin: 10px;
+            float: left;
+            padding: 30px;
+            text-align: center;
+            background-color: lightgray;
+        }
+
+        p {
+            background-color: white;
+        }
+    </style>
+    <title>get Element*</title>
+</head>
+
+<body>
+    <!--getElementById-->
+    <div id="gEBI">
+        <span id="spelem">Element</span>
+        <br />
+        <button onclick="changecolor()">Change Color</button>
+    </div>
+
+    <!--getElementsByTagName-->
+    <div id="gEBTN">
+        <p>P1-Debasish</p>
+        <hr>
+        <p id="demo">Paragraph 2</p>
+        <button onclick="changetext()">Change Text</button>
+    </div>
+
+    <!--getElementsByClassName-->
+    <div id="gEBCN">
+        <p class="fontdemo">Paragraph 2</p>
+        <button onclick="changefont()">Change Font</button>
+    </div>
+
+
+    <div>
+        document.anchors
+        document.body
+        document.documentElement
+        document.embeds
+        document.forms
+    </div>
+    <div>
+        document.head
+        document.images
+        document.links
+        document.scripts
+        document.title
+    </div>
+
+    <script>
+        //getElementById
+        changecolor = () => {
+            let elem = document.getElementById("gEBI");
+            elem.style.backgroundColor = "red";
+        }
+
+
+        changetext = () => {
+            const element = document.getElementsByTagName("p");
+            console.log('element:', element)
+            document.getElementById("demo").innerHTML = 'Copy from :' + element[0].innerHTML;
+        }
+
+        changefont = () => {
+            let x = document.getElementsByClassName("fontdemo");
+            x[0].style.fontFamily = "Arial";
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

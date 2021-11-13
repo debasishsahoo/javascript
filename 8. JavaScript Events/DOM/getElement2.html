@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="table">
+        <tr>
+            <td>Your age:</td>
+            <td>
+                <label>
+                    <input type="radio" name="age" value="young" checked> less than 18
+                </label>
+                <label>
+                    <input type="radio" name="age" value="mature"> from 18 to 50
+                </label>
+                <label>
+                    <input type="radio" name="age" value="senior"> more than 60
+                </label>
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <form name="my-form">
+        <div class="article">Article</div>
+        <div class="long article">Long article</div>
+    </form>
+</body>
+<script>
+    let inputs = table.getElementsByTagName('input');
+
+    for (let input of inputs) {
+        alert(input.value + ': ' + input.checked);
+    }
+
+    let form = document.getElementsByName('my-form')[0];
+    console.log('form:', form)
+    let articles = form.getElementsByClassName('article');
+    console.log('articles:', articles)
+</script>
+
+</html>
