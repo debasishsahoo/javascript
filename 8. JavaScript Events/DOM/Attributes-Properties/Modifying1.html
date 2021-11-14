@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .alert {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="alert">
+        <strong>Hi there!</strong> You've read an important message.
+    </div>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>node.append(...nodes or strings)</td>
+                <td>append nodes or strings at the end of node</td>
+            </tr>
+            <tr>
+                <td>node.prepend(...nodes or strings)</td>
+                <td>insert nodes or strings at the beginning of node,</td>
+            </tr>
+            <tr>
+                <td>node.before(...nodes or strings)</td>
+                <td> insert nodes or strings before node</td>
+            </tr>
+            <tr>
+                <td>node.after(...nodes or strings)</td>
+                <td>insert nodes or strings after node,</td>
+            </tr>
+            <tr>
+                <td>node.replaceWith(...nodes or strings)</td>
+                <td>replaces node with the given nodes or strings.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ol id="ol">
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+    </ol>
+    <div id="div"></div>
+
+</body>
+
+<script>
+    let div = document.createElement('div');
+    div.className = "alert";
+    div.innerHTML = "<strong>Hi there!</strong> My name is Debasish";
+    document.body.prepend(div);
+
+    ol.before('before');
+    ol.after('after');
+
+    let liFirst = document.createElement('li');
+    liFirst.innerHTML = 'prepend';
+    ol.prepend(liFirst);
+
+    let liLast = document.createElement('li');
+    liLast.innerHTML = 'append';
+    ol.append(liLast);
+
+    div.before('<p>Hello</p>', document.createElement('hr'));
+</script>
+
+</html>

@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>JavaScript Handling the Mouseout Event</title>
+    <style>
+        .dv1 {
+            width: 200px;
+            height: 200px;
+        }
+
+        .dv2 {
+            background-color: #D94A38;
+            width: 170px;
+            height: 80px;
+            margin: 20px;
+            padding-top: 20px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 18px;
+            float: left;
+            text-align: center;
+
+        }
+    </style>
 </head>
+
 <body>
-    <button type="button" onmouseout="alert('You have moved out of the button!');">Place Mouse Inside Me and Move Out</button>
-    <a href="#" onmouseout="alert('You have moved out of the link!');">Place Mouse Inside Me and Move Out</a>
+    <div class="dv1">
+        <div class="dv2" onmouseover="this.innerHTML='Thank You'" onmouseout="this.innerHTML='Mouse Over Me'">Mouse Over
+            Me</div>
+        <div class="dv2" onclick="clickMeEvent(this)">Click Me<br>Click Me Again</div>
+
+
+        <script type="application/javascript">
+            function clickMeEvent(obj) {
+                if (obj.innerHTML == "Click Me") {
+                    obj.innerHTML = "Click Me<br>Click Me Again";
+                    return;
+                }
+                if (obj.innerHTML == "Click Me<br>Click Me Again") {
+                    obj.innerHTML = "Thank You";
+                    return;
+                }
+                if (obj.innerHTML == "Thank You") {
+                    obj.innerHTML = "Goodbye";
+                    return;
+                }
+                if (obj.innerHTML == "Goodbye") {
+                    obj.style.display = "none";
+                    return;
+                }
+            }
+        </script>
+    </div>
 </body>
+
 </html>

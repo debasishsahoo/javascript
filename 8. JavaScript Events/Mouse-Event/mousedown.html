@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .dv2 {
+            background-color: #D94A38;
+            width: 170px;
+            height: 80px;
+            margin: 20px;
+            padding-top: 20px;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 18px;
+            float: left;
+            text-align: center;
+
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="dv2" onmousedown="mDown(this)" onmouseup="mUp(this)">Click Me</div>
+    <script>
+        function mDown(obj) {
+            obj.style.backgroundColor = "#1ec5e5";
+            obj.innerHTML = "Release Me"
+        }
+
+        function mUp(obj) {
+            obj.style.backgroundColor = "#D94A38";
+            obj.innerHTML = "Click Me"
+        }
+
+    </script>
+</body>
+
+</html>

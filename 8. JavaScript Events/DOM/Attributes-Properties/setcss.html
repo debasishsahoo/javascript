@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* styles rely on the custom attribute "order-state" */
+        .order[order-state="new"] {
+            color: green;
+        }
+
+        .order[order-state="pending"] {
+            color: blue;
+        }
+
+        .order[order-state="canceled"] {
+            color: red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        Select Order Status:
+        <select id="mySelect">
+            <option value="new">New Order</option>
+            <option value="pending">Pending Order</option>
+            <option value="canceled">Cancel Order</option>
+        </select>
+    </form>
+    <button type="button" onclick="myFunction()">Change The Status</button>
+    <div class="order" order-state="canceled">
+        ORDER
+    </div>
+</body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("mySelect").value;
+        document.querySelector(".order").setAttribute("order-state", x);
+    }
+</script>
+
+</html>

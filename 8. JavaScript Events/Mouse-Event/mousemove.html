@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div onmousemove="move(event)" onmouseout="clearCoor()"></div>
+    <p id="demo"></p>
+</body>
+<script>
+    move = (e) => {
+        var x = e.clientX;
+        var y = e.clientY;
+        var coor = "Coordinates: (" + x + "," + y + ")";
+        document.getElementById("demo").innerHTML = coor;
+    }
+
+    clearCoor = () => {
+        document.getElementById("demo").innerHTML = "";
+    }
+</script>
+
+</html>

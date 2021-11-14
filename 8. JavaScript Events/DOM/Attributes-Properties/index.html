@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attributes and properties</title>
+</head>
+
+<body id="test" something="non-standard" type="body">
+    <input id="input" type="text" />
+
+    <div id="elem" about="Elephant"></div>
+
+
+
+    <script>
+        document.body.myData = {
+            name: 'Caesar',
+            title: 'Imperator'
+        };
+
+        console.log(document.body.myData.title);
+        console.log(document.body.id);
+        console.log(document.body.something);
+        console.log(document.body.myData.title);
+        console.log(input.type);
+        //console.log(body.type);
+        console.log(document.body.getAttribute('something'));
+
+        //get,set,remove,has
+        console.log(elem.getAttribute('About'));
+        elem.setAttribute('Test', 123);
+        console.log(elem.outerHTML);
+        console.log(elem.hasAttribute('About'));
+        console.log(elem.removeAttribute('About'));
+
+        for (let attr of elem.attributes) {
+            console.log(`${attr.name} = ${attr.value}`);
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

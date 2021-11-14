@@ -5,19 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attributes and properties</title>
+    <title>Document</title>
 </head>
 
 <body>
-    <script>
-        document.body.myData = {
-            name: 'Caesar',
-            title: 'Imperator'
-        };
-
-        alert(document.body.myData.title);
-    </script>
-
+    <p id="demo" ondblclick="dbc()">Double-click me.</p>
 </body>
+<script>
+    dbc = () => {
+        document.getElementById("demo").innerHTML = "I was double-clicked!";
+    }
+</script>
 
 </html>

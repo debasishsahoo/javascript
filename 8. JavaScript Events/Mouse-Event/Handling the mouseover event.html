@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>JavaScript Handling the Mouseover Event</title>
+    <style>
+        .myDiv {
+            border: 5px outset red;
+            background-color: lightblue;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    <button type="button" onmouseover="alert('You have placed mouse pointer over a button!');">Place Mouse Over Me</button>
+    <button type="button" onmouseover="alert('You have placed mouse pointer over a button!');">Place Mouse
+        OverMe</button>
+    <br>
     <a href="#" onmouseover="alert('You have placed mouse pointer over a link!');">Place Mouse Over Me</a>
+    <br>
+    <input value="Mouse over in the Screen" id='input'>
+    <br>
+    <div class="myDiv" onmouseover=screencapture()>
+        <h2>This is a heading in a div element</h2>
+        <p>This is some text in a div element.</p>
+    </div>
 </body>
+<script>
+    screencapture = () => {
+        var input = document.getElementById('input');
+        let x = event.clientX + ':' + event.clientY
+        input.value = x;
+    }
+</script>
+
 </html>

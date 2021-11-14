@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <img id="myimg" src="train1.png" />
+        <center>
+            <p>Click the below button to move the image right</p>
+            <input type="button" value="Click Me" onclick="moveRight();" />
+        </center>
+    </form>
+</body>
+<script>
+    var img = null;
+    function init() {
+        img = document.getElementById('myimg');
+        img.style.position = 'relative';
+        img.style.left = '50px';
+    }
+    function moveRight() {
+        //img.style.left = parseInt(img.style.left) + 10 + 'px';
+        setInterval(function () {
+            img.style.left = parseInt(img.style.left) + 10 + 'px';
+        }, 1000);
+    }
+    window.onload = init;
+</script>
+
+</html>

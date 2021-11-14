@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=" utf-8">
+    <title> window.onload() </title>
+    <style type="text/css">
+        #bg {
+            width: 200px;
+            height: 200px;
+            border: 4px solid blue;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("bg").style.backgroundColor = "red";
+            document.getElementById("bg").style.width = "300px";
+            document.getElementById("bg").style.height = "300px";
+        }
+    </script>
+</head>
+
+<body>
+    <h2> This is an example of window.onload() </h2>
+    <div id="bg"></div>
+</body>
+
+</html>
