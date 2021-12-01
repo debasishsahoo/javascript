@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .controls {
+            display: flex;
+        }
+
+        .container {
+            margin-top: 55px;
+        }
+
+        .sbtn {
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+            border-radius: 3px;
+            margin: 5px;
+            height: 45px;
+        }
+
+        .ibtn {
+            border-radius: 0;
+            height: 100%;
+        }
+
+        .aligntext {
+            display: flex;
+        }
+
+        #editor {
+            padding: 12px;
+            outline: 0;
+            box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            min-height: 500px;
+        }
+
+        .dropdown-menu {
+            padding: 3px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    <title>Text Editor</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle sbtn" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-magic"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">
+                        <h1>Header 1</h1>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <h2>Header 2</h2>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <h3>Header 3</h3>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <h4>Header 4</h4>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <h5>Header 5</h5>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <h6>Header 6</h6>
+                    </a>
+                </div>
+            </div>
+            <div class="btn-group sbtn" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light rbtn" onclick="execCMD('bold')"><i
+                        class="bi bi-type-bold"></i></button>
+                <button type="button" class="btn btn-light rbtn"><i class="bi bi-type-italic"></i></button>
+                <button type="button" class="btn btn-light"><i class="bi bi-type-underline"></i></button>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle sbtn" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-expanded="false">
+                    Select Fonts
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+            <button class="btn btn-light sbtn"><input type="color" class="btn dropdown-toggle"></button>
+            <div class="btn-group sbtn" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light"><i class="bi bi-list-ul"></i></button>
+                <button type="button" class="btn btn-light"><i class="bi bi-list-ol"></i></button>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle ibtn" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-text-paragraph"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="aligntext">
+                            <div class="btn-group sbtn" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-light"><i class="bi bi-text-left"></i></button>
+                                <button type="button" class="btn btn-light"><i class="bi bi-text-center"></i></button>
+                                <button type="button" class="btn btn-light"><i class="bi bi-text-right"></i></button>
+                                <button type="button" class="btn btn-light"><i class="bi bi-justify"></i></button>
+                            </div>
+                            <div class="btn-group sbtn" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-light"><i
+                                        class="bi bi-text-indent-right"></i></button>
+                                <button type="button" class="btn btn-light"><i
+                                        class="bi bi-text-indent-left"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle sbtn" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-table"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                </div>
+            </div>
+            <div class="btn-group sbtn" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light"><i class="bi bi-paperclip"></i></button>
+                <button type="button" class="btn btn-light"><i class="bi bi-image"></i></button>
+                <button type="button" class="btn btn-light"><i class="bi bi-camera-video"></i></button>
+            </div>
+            <div class="btn-group sbtn" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light"><i class="bi bi-fullscreen"></i></button>
+                <button type="button" class="btn btn-light"><i class="bi bi-code-slash"></i></button>
+                <button type="button" class="btn btn-light"><i class="bi bi-question-lg"></i></button>
+            </div>
+        </div>
+
+        <br>
+        <div id="editor" contenteditable="true" name='richTextField'>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    enableEditMode = () => {
+        richTextField.document.desinMode = 'On';
+    }
+    execCMD = (cmd) => {
+        richTextField.document.execCommand(cmd, false, null);
+    }
+</script>
+
+</html>

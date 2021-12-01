@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <!-- <div id="div"></div> -->
+    <div id="div"></div>
 
     <!-- <div id="first">First</div>
     <div id="second">Second</div> -->
@@ -29,14 +29,14 @@
 
     <!-- <ul id="ul"></ul> -->
 
-    <ol id="list">
+    <!-- <ol id="list">
         <li>0</li>
         <li>1</li>
         <li>2</li>
-    </ol>
+    </ol> -->
     <script>
-        //div.insertAdjacentHTML('beforebegin', '<p>Hello</p>');
-        // div.insertAdjacentHTML('afterend', '<p>Bye</p>');
+        div.insertAdjacentHTML('beforebegin', '<p>Hello</p>');
+        div.insertAdjacentHTML('afterend', '<p>Bye</p>');
 
         // document.body.insertAdjacentHTML("afterbegin", `<div class="alert">
         //<strong>Hi there!</strong> You've read an important message.
@@ -80,11 +80,11 @@
                 ul.append(...getListContent());
         **/
 
-        let newLi = document.createElement('li');
-        newLi.innerHTML = 'Hello, world!';
+        //let newLi = document.createElement('li');
+        //newLi.innerHTML = 'Hello, world!';
         //list.appendChild(newLi);
         //list.insertBefore(newLi, list.children[1]);
-        list.insertBefore(newLi, list.firstChild);
+        //list.insertBefore(newLi, list.firstChild);
 
 
 
