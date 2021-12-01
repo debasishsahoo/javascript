@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onFocus</title>
+</head>
+
+<body>
+    <form name='demo'>
+        <input type="text" onfocus='NameFunction()'>
+        <input type="text" onfocus='CityFunction()'>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+<script>
+    function NameFunction() {
+        alert('Name is mandatory Field');
+    }
+
+    function CityFunction() {
+        alert('Email is mandatory Field');
+    }
+</script>
+
+</html>
