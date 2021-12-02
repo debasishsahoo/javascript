@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnBlur</title>
+</head>
+
+<body>
+    Enter your name: <input type="text" id="fnm" onblur="Functa()">
+    <p>when the function a is triggered then the input text gets converted into upper case</p>
+</body>
+<script>
+    Functa = () => {
+        var p = document.getElementById("fnm");
+        p.value = p.value.toUpperCase();
+    }
+</script>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onSelect</title>
+</head>
+
+<body>
+    Display text: <input type="text" id='inptxt' value="Welcome My World!" onselect="Function5th()">
+    <p id="demo1"></p>
+</body>
+<script>
+    Function5th = () => {
+        let inputvalue = document.getElementById("inptxt").value;
+        document.getElementById("demo1").innerHTML = inputvalue;
+    }
+</script>
+
+</html>

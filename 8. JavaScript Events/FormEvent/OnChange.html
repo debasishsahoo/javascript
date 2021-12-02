@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnChange</title>
+</head>
+
+<body>
+    <form>
+        Choose which subject you like and will prefer:
+        <select id="subjects" onchange="preferred()">
+            <option value="Chemistry">Chemistry</option>
+            <option value="Physics">Physics</option>
+            <option value="Maths">Maths</option>
+        </select>
+    </form>
+</body>
+<script>
+    preferred = () => {
+        let prefer = document.getElementById("subjects").value;
+        alert("subjects which are most liked and preferred " + prefer);
+    }
+</script>
+
+</html>

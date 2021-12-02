@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span id="info" style="color:red"> Image Loading.</span>
+    <br /><br />
+    <br /><br />
+    <img src="large.bmp" width="200px" height="150px" onload="OnLoadImage ()" />
+</body>
+<script type="text/javascript">
+    function OnLoadImage() {
+        var info = document.getElementById("info");
+        info.innerHTML += "<br />The image has been loaded.";
+        RemoveEsc();
+    }
+</script>
+
+</html>

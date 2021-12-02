@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        JavaScript Custom Events
+    </title>
+    <style>
+        .body-data {
+            border: #81D4FA 2px solid;
+            background-color: #03a9f400;
+            text-align: left;
+            padding-left: 20px;
+            height: auto;
+            width: auto;
+        }
+
+        .resultText {
+            margin: 0 0 3px 0;
+            padding: 0px;
+            display: block;
+            font-weight: bold;
+        }
+
+        .heading {
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+            font-size: 15px;
+            width: 98%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body-data">
+        <div class="heading">
+            <h2> JavaScript Custom Events </h2>
+        </div>
+        <div class="resultText">
+            </br>
+            <button> Trigger Event </button>
+            <p id="result1"> Default Text </p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var textElement = document.getElementById('result1');
+        // Adding defined custom event on the text field element
+        textElement.addEventListener('newEventName', function (event) {
+            textElement.innerHTML = event.detail.newText;
+            textElement.style.fontSize = event.detail.fontSize;
+        });
+        function changeText(t, s) {
+            // Creating new event name newEventName with event object detail containing
+            // new text to be updated and font size to change dynamically
+            var customEvent = new CustomEvent('newEventName', {
+                detail: {
+                    newText: t,
+                    fontSize: s
+                }
+            });
+            // dispatching the event on element on which we want it to register
+            textElement.dispatchEvent(customEvent);
+        }
+    </script>
+</body>
+
+</html>

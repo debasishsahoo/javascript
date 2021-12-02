@@ -9,15 +9,15 @@
 </head>
 
 <body>
-    <form action='#' onsubmit='myfunction()'>
+    <form onsubmit='Input_a()' action='http://www.google.com'>
         Enter Your Name: <input type="text" name="name" id="name">
         <input type="submit" value="Submit">
     </form>
 </body>
 <script>
-    myFunction = () => {
+    Input_a = () => {
         var name = document.getElementById("name").value;
-        alert("Hello " + name);
+        alert("Hi" + name + '! This Page will get redirected to Google.com');
     }
 
 </script>

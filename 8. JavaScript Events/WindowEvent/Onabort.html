@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Event</title>
+</head>
+
+<body>
+    <span id="info2" style="color:red"> Image Loading.</span>
+    <br /><br />
+    <span id="esc">Press Escape key to abort.</span>
+    <br /><br />
+    <img src="large.bmp" width="200px" height="150px" onabort="OnAbortImage()" />
+</body>
+
+<script type="text/javascript">
+    OnAbortImage = () => {
+        var info = document.getElementById("info2");
+        info.innerHTML += "<br />loaded image is aborted.";
+        RemoveEsc();
+    }
+    RemoveEsc = () => {
+        var esc = document.getElementById("esc");
+        esc.parentNode.removeChild(esc);
+    }
+</script>
+
+</html>

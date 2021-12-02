@@ -10,20 +10,23 @@
 
 <body>
     <form name='demo'>
-        <input type="text" onfocus='NameFunction()'>
-        <input type="text" onfocus='CityFunction()'>
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
+        User Name:<input type="text" id='un' onfocus='focusin(this.id)' onfocusout='focusout(this.id)' />
+        Confirm user name:<input type="text" id='cun' onfocus='focusin(this.id)' onfocusout='focusout(this.id)' />
+        <input type="submit" value="Submit" /><input type="reset" value="Reset" />
     </form>
 </body>
 <script>
-    function NameFunction() {
-        alert('Name is mandatory Field');
+    focusin = (e) => {
+        {
+            document.getElementById(e).style.backgroundColor = 'red';
+        }
+    }
+    focusout = (e) => {
+        {
+            document.getElementById(e).style.backgroundColor = 'yellow';
+        }
     }
 
-    function CityFunction() {
-        alert('Email is mandatory Field');
-    }
 </script>
 
 </html>
