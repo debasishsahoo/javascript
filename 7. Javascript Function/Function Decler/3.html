@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <font color="blue">
+        <h1 align="center">Function definition with parameter and function calling with no arguments</h1>
+    </font>
+    <script>
+        function perfectNumber(input = 6) {
+            var i = 1, sum = 0;
+            while (input > i) {
+                if (input % i == 0) {
+                    sum = sum + i;
+                }
+                i++;
+            }
+            if (sum == input) {
+                document.write(input + " is perfect number");
+            }
+            else {
+                document.write(input + " is not perfect number");
+            }
+        }
+        perfectNumber();
+    </script>
+</body>
+
+</html>

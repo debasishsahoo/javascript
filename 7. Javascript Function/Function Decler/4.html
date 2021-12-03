@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <font color="blue">
+        <h1 align="center">Function definition with parameter and function calling with arguments</h1>
+    </font>
+    <script>
+        function squareSum(lastNumber) {
+            var i, sum = 0, j = 1;
+            for (i = 1; i <= lastNumber; i++) {
+                j = i * i;
+                sum = sum + j;
+            }
+            return sum;
+        }
+        document.write("Sum of the Squares is :" + squareSum(10));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <font color="blue">
+        <h1 align="center">Function definition with no parameter and function calling with no arguments</h1>
+    </font>
+    <input type="number" id='num'>
+    <input type="button" value="Check" onclick="palindromeOrNot()">
+</body>
+<script>
+    function palindromeOrNot() {
+        let remainder, total = 0, actualNumber, input;
+        input = document.getElementById('num').value;
+        actualNumber = parseInt(input);
+        while (input > 0) {
+            remainder = input % 10;
+            total = (total * 10) + remainder;
+            input = parseInt(input / 10);
+
+        }
+        if (actualNumber === total) {
+            document.write(actualNumber + ": is palindrome number ");
+        }
+        else {
+            document.write(actualNumber + ": is not palindrome");
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Function Call</title>
+
+<body>
+
+    <p id='demo'></p>
+    <p id="empdetails"></p>
+    <P id="detailsAdd"></P>
+
+
+
+
+    <!---Function Call Inside a Function-->
+    <script>
+        function Emp(empid, empname) {
+            this.empid = empid;
+            this.empname = empname;
+        }
+        function Employee(empid, empname) {
+            Emp.call(this, empid, empname);
+        }
+        document.write(new Employee(123, "Debasish Sahoo").empname);
+    </script>
+
+
+    <!---Function Call with Return -->
+    <script>
+
+        function MultiFunction(x, y) {
+            return x * y;
+        }
+
+        var multiple = MultiFunction(2, 3);
+        document.getElementById("demo").innerHTML = multiple;
+    </script>
+
+
+
+    <!---Function call with object as Parameter-->
+    <script>
+        var employee = {
+            details: function () {
+                return this.firstName + ' ' + this.lastName + ' ' + this.id;
+            }
+        }
+
+        var employee1 = {
+            firstName: "Debasish",
+            lastName: "Sahoo",
+            id: "234"
+        }
+        var employee2 = {
+            firstName: "Sayani",
+            lastName: "Dhar",
+            id: "345"
+        }
+
+        var x = employee.details.call(employee1);
+        document.getElementById("empdetails").innerHTML = x;
+
+    </script>
+
+    <!--Function call with object and Varible-->
+    <script>
+        var EmployeeWithAddress = {
+            details: function (city, country) {
+                return this.firstName + ' ' + this.lastName + ' ' + this.id + ' ' + city + ' ' + country;
+            }
+        }
+
+
+        var y = EmployeeWithAddress.details.call(employee2, "Kolkata", "India");
+        document.getElementById("detailsAdd").innerHTML = y;
+
+    </script>
+
+
+
+</html>

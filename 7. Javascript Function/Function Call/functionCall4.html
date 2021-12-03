@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var sayHello = function () {
+            document.write('Hello, ' + this.firstName);
+        };
+        var sayGoodbye = function () {
+            document.write('Goodbye, ' + this.firstName);
+        };
+
+        var employee1 = {
+            firstName: "Debasish",
+            lastName: "Sahoo",
+            age: '24'
+        }
+        var employee2 = {
+            firstName: "Saideep",
+            lastName: "Reddy",
+            age: '23'
+        }
+
+        document.write('with call() method');
+        document.write('</br>');
+        sayHello.call(employee1);
+        document.write('</br>');
+        sayGoodbye.call(employee2);
+        document.write('</br></br>');
+        document.write('with apply() method');
+        document.write('</br>');
+        sayHello.apply(employee1);
+        document.write('</br>');
+        sayGoodbye.apply(employee2);
+
+    </script>
+</body>
+
+</html>

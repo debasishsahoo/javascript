@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Call</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <script>
+        const Employee = [
+            { domain: "gmail.com", name: "John", age: 30 },
+            { domain: "yahoo.com", name: "Mary", age: 25 },
+            { domain: "hotmail.com", name: "Peter", age: 28 },
+            { domain: "gmail.com", name: "Sara", age: 27 },
+            { domain: "yahoo.com", name: "Mark", age: 23 },
+            { domain: "hotmail.com", name: "Linda", age: 22 }
+        ]
+        for (let i = 0; i < Employee.length; i++) {
+            (function (i) {
+                this.print = function () {
+                    document.write(i + ' ' + this.domain + ' ' + this.name + ' ' + this.age + '<br>');
+                }
+                this.print();
+            }).call(Employee[i], i);
+
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
