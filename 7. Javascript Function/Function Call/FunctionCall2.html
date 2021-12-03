@@ -11,6 +11,7 @@
 <body>
     <p id="demo"></p>
     <script>
+        //Array of Objects
         const Employee = [
             { domain: "gmail.com", name: "John", age: 30 },
             { domain: "yahoo.com", name: "Mary", age: 25 },
@@ -19,7 +20,11 @@
             { domain: "yahoo.com", name: "Mark", age: 23 },
             { domain: "hotmail.com", name: "Linda", age: 22 }
         ]
+
+
+        //Itarate through the array of objects
         for (let i = 0; i < Employee.length; i++) {
+            //() IIFE(Immediately Invoked Function Expression)
             (function (i) {
                 this.print = function () {
                     document.write(i + ' ' + this.domain + ' ' + this.name + ' ' + this.age + '<br>');
@@ -28,10 +33,6 @@
             }).call(Employee[i], i);
 
         }
-
-
-
-
     </script>
 
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //declaring a function func
+        function fact(b) {
+            //declaring a variable
+            var res = 1;
+            //for loop to find the factorial of the number
+            for (let i = b; i > 1; i--) {
+                //fetching and consolidating the result statement
+                res *= i;
+            }
+            //returning the result which contains the factorial of the number b
+            return res;
+        }
+        document.write(fact(3));
+    </script>
+</body>
+
+</html>

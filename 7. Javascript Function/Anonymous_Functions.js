@@ -1,46 +1,43 @@
-/* let show = function () {
+let show = function () {
     return ('Anonymous function');
 };
 
 let a = show();
-console.log('a:', a) */
+console.log('a:', a)
+
+
 //Using anonymous functions as arguments of other functions
-/* setTimeout(function () {
+setTimeout(function () {
     console.log('Execute later after 1 second')
-}, 15000); */
+}, 15000);
+
+
 
 //Immediately invoked function execution
-/* (function () {
+(function () {
     console.log('IIFE');
-})(); */
+})();
 
-/* (function () {
+(function () {
     console.log('Immediately invoked function execution');
-})(); */
+})();
 
-/* let person = {
+let person = {
     firstName: 'Debasish',
     lastName: 'Sahoo'
-}; */
-
-/* (function () {
-    console.log(`${person.firstName} ${person.lastName}`);
-})(person); */
-
-
-/* let show = function () {
-    return ('Anonymous function');
 };
-console.log('show:', show()) */
+
+(function () {
+    console.log(`${person.firstName} ${person.lastName}`);
+})(person);
 
 //Arrow functions
-
-
-/* show = () => console.log('Anonymous function');
+show = () => console.log('Anonymous function');
 show();
 
+//You can not declar function with same name
 let add = function (a, b) {
     return a + b;
 };
 
-let add = (a, b)  => a + b;  */ 
+let add = (a, b) => a + b;   
