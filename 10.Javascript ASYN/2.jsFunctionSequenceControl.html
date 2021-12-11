@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Function Sequence</title>
+</head>
+
+<body>
+    <p id='demo'></p>
+    <script>
+        function Display(anyValue) {
+            document.getElementById("demo").innerHTML = anyValue;
+        }
+        //Method 1
+        /*  function MyCalculator(x, y) {
+             let z = x + y
+             return z
+         }
+         let result = MyCalculator(2, 3);
+         Display(result); */
+
+
+        //Method 2
+        /* function MyCalculator(x, y) {
+            let z = x + y
+            Display(z);
+        }
+        MyCalculator(2, 3); */
+
+
+        //Method 3
+        //MCB->Method Call Back
+        function MyCalculator(x, y, MCB) {
+            let z = x + y;
+            MCB(z);
+            //Display(z);
+        }
+        MyCalculator(2, 3, Display);
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>g – global</title>
+</head>
+
+<body>
+    <h1>g – global</h1>
+    <p id='para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam commodi, cumque accusantium quasi
+        quia
+        explicabo
+        assumenda natus voluptate aperiam, asperiores non nostrum iusto maiores, beatae expedita? A maiores amet animi.
+    </p>
+    <br />
+    <input type="text" id="SearchValue">
+    <input type="button" value="Search" onclick="Search()">
+    <script>
+        function Search() {
+            var para = document.getElementById('para');
+            var SearchValue = document.getElementById('SearchValue').value;
+            var regex = new RegExp(SearchValue, 'g');
+            var result = para.innerHTML.match(regex);
+            console.log(result);
+        }
+    </script>
+
+</body>
+
+</html>

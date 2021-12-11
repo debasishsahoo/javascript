@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java script Call Back</title>
+</head>
+
+<body>
+    <h1 id='demo'></h1>
+    <script>
+        setTimeout(MyOWNFunction, 13000);
+        function MyOWNFunction() {
+            document.getElementById("demo").innerHTML = "Responce After 13 Second";
+        }
+    </script>
+</body>
+
+</html>

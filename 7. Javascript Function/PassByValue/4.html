@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pass by Value</title>
+</head>
+
+<body>
+    <h2>Pass by Value in JavaScript</h2>
+    <script>
+        function callValue(var1, var2) {
+            document.write("Inside Call by Value Method");
+            var1 = "Chaitanya";
+            var2 = "CPG";
+            document.write(" var1 = " + var1 + " var2 = " + var2 + "</br>");
+        }
+        let var1 = "Karthick";
+        let var2 = "IBM";
+        document.write("Before Call by Value Method");
+        document.write(" var1 = " + var1 + " var2 = " + var2 + "</br>");
+        callValue(var1, var2)
+        document.write("After Call by Value Method");
+        document.write(" var1 = " + var1 + " var2 = " + var2 + "</br>");
+    </script>
+</body>
+
+</html>

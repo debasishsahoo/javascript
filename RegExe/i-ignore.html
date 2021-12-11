@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i – ignore-case</title>
+</head>
+
+<body>
+    <p id='Elm'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque beatae nam autem itaque nobis non
+        magnam temporibus minima, nesciunt, voluptates vero blanditiis quia? Perspiciatis ipsam delectus neque
+        perferendis ullam atque?</p>
+    <br />
+    <h5>Search ipsum with Upper case or lower Case</h5>
+    <input type="text" id="input">
+    <input type="button" value="Check" onclick="check()">
+    <br />
+    <p id="result"></p>
+    <script>
+        function check() {
+            let str = document.getElementById('Elm').innerHTML;
+            let input = document.getElementById('input').value;
+            iput=
+            if (input == "ipsum" || input == "IPSUM") {
+                let regEx = /ipsum/i;
+                let result = str.search(regEx);
+                document.getElementById('result').innerHTML = result;
+            }
+            else {
+                document.getElementById('result').innerHTML = 'please Search ipsum';
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

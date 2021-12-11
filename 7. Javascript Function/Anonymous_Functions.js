@@ -1,19 +1,19 @@
-let show = function () {
+/* let show = function () {
     return ('Anonymous function');
 };
 
 let a = show();
-console.log('a:', a)
+console.log('a:', a) */
 
 
 //Using anonymous functions as arguments of other functions
 setTimeout(function () {
-    console.log('Execute later after 1 second')
-}, 15000);
+    console.log('Execute later after 5 second')
+}, 5000);
 
 
 
-//Immediately invoked function execution
+/* //Immediately invoked function execution
 (function () {
     console.log('IIFE');
 })();
@@ -40,4 +40,4 @@ let add = function (a, b) {
     return a + b;
 };
 
-let add = (a, b) => a + b;   
+let add = (a, b) => a + b;    */

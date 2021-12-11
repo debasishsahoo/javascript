@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>JavascriptMath.abs() method demonstration</h2>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+    <p id="demo7"></p>
+    <p id="demo8"></p>
+    <p id="demo9"></p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <p id="demo12"></p>
+    <script>
+        // Any negative or positive number in the string format
+        document.getElementById("demo1").innerHTML = "Absolute value of string having numerical value -15 when evaluated using Math.abs() method is = " + Math.abs('-15');
+        // Any negative number
+        document.getElementById("demo2").innerHTML = "Absolute value ofnegative number -29 when evaluated using Math.abs() method is = " + Math.abs(-29);
+        // null value
+        document.getElementById("demo3").innerHTML = "Absolute value of null value when evaluated using Math.abs() method is = " + Math.abs(null);
+        // blank string
+        document.getElementById("demo4").innerHTML = "Absolute value of blank string when evaluated using Math.abs() method is = " + Math.abs('');
+        // blank array
+        document.getElementById("demo5").innerHTML = "Absolute value of blank array when evaluated using Math.abs() method is = " + Math.abs([]);
+        //Array containing single numerical value in it
+        document.getElementById("demo6").innerHTML = "Absolute value of single number value in an array when evaluated using Math.abs() method is = " + Math.abs([2]);
+        //Array containing Multiple Numbers in it as elements
+        document.getElementById("demo7").innerHTML = "Absolute value of multiple number value in an array when evaluated using Math.abs() method is = " + Math.abs([12, 23]);
+        // Blank Object
+        document.getElementById("demo8").innerHTML = "Absolute value of blank object when evaluated using Math.abs() method is = " + Math.abs({});
+        // Any string value
+        document.getElementById("demo9").innerHTML = "Absolute value of string value when evaluated using Math.abs() method is = " + Math.abs('string');
+        // With no parameter value
+        document.getElementById("demo10").innerHTML = "Absolute value of no parameter when evaluated using Math.abs() method is = " + Math.abs();
+        // With 0 (zero) as the parameter value
+        document.getElementById("demo11").innerHTML = "Absolute value of zero value when evaluated using Math.abs() method is = " + Math.max(0);
+        // With undefined value
+        document.getElementById("demo12").innerHTML = "Absolute value of undefined value when evaluated using Math.abs() method is = " + Math.max(undefined);
+    </script>
+</body>
+
+</html>
