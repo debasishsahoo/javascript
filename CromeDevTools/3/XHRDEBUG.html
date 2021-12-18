@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHR DEBUG</title>
+</head>
+
+<body>
+    <button onClick='GetPublicData()'>Public</button>
+    <button onmouseover='GetCatData()'>Cat</button>
+    <button onkeypress='GetDogData()'>Dog</button>
+    <button onClick='GetGenderData()'>Gender</button>
+    <p id="demo"></p>
+</body>
+<script>
+    display = (data) => {
+        document.getElementById("demo").innerHTML = data;
+
+    }
+    GetPublicData = () => {
+        let data = fetch('https://api.publicapis.org/entries')
+        display(data);
+    }
+    GetCatData = () => {
+        let data = fetch('https://catfact.ninja/fact')
+        display(data);
+    }
+    GetDogData = () => {
+        let data = fetch('https://dog.ceo/api/breeds/image/random')
+        display(data);
+    }
+    GetGenderData = () => {
+        debugger
+        let data = fetch('https://api.genderize.io/?name=luc')
+        display(data);
+    }
+
+</script>
+
+
+</html>

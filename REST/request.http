@@ -1,6 +1,9 @@
 GET http://jsonplaceholder.typicode.com/posts
 
-###
+/*
+ * GET home page.
+ */
+
 POST http://jsonplaceholder.typicode.com/posts
 Content-Type: application/json
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sync and Async </title>
+</head>
+
+<body>
+    <p id='demo'></p>
+    <script>
+        /*   setTimeout(MyFUNCTION, 1000);
+          function MyFUNCTION() {
+              document.getElementById("demo").innerHTML = Math.random();
+          } 
+          */
+        ////////////////////////////////////
+        /* setTimeout(function () { MyFunction('this is Asyanc with paramiter') }, 10000);
+        function MyFunction(param) {
+            document.getElementById("demo").innerHTML = param;
+        } 
+        */
+
+        ////////////////////////////////////
+        /* setInterval(MyFUNCTION, 1000)
+        function MyFUNCTION() {
+            document.getElementById("demo").innerHTML = Math.random();
+        } */
+        //////////////////////////////////
+        setInterval(TimeFunction, 5000);
+        function TimeFunction() {
+            let date = new Date();
+            document.getElementById("demo").innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+
+        }
+
+    </script>
+</body>
+
+</html>

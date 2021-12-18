@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //------------------------------------------------//
+        /* console.log('START');
+        function GetFullName(FN, LN) {
+            setTimeout(function () {
+                console.log('Inside Callback');
+                let name = FN + LN;
+                return name;
+            }, 10000);
+        }
+        let NM = GetFullName('Debasish', 'Sahoo');
+        console.log(NM);
+        console.log('END'); */
+        //------------------------------------------------//
+
+        //------------------------------------------------//
+        /* console.log('START');
+        function GetFullName(FN, LN, callback) {
+            setTimeout(function () {
+                console.log('Inside Callback');
+                let name = FN + LN;
+                callback(name);
+            }, 10000);
+        }
+        let NM = GetFullName('Debasish', 'Sahoo', (NM) => { console.log(NM); });
+        console.log('END'); */
+
+        //------------------------------------------------//
+        function GetFullName(FN, LN, callback) {
+            setTimeout(function () {
+                console.log('Inside Name Callback');
+                let name = FN + LN;
+                callback(name);
+            }, 10000);
+        }
+
+        function GetHobbies(name, callback) {
+            setTimeout(function () {
+                console.log('Inside Hobbies Callback');
+                callback(['Cricket', 'Football']);
+            }, 10000);
+
+        }
+        let NM = GetFullName('Debasish', 'Sahoo',
+            (NM) => {
+                console.log(NM);
+                GetHobbies(NM, (hobbies) => { console.log(hobbies); })
+            });
+
+
+    </script>
+</body>
+
+</html>

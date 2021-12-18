@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button3 {
+            background-color: white;
+            color: black;
+            border: 2px solid #f44336;
+        }
+
+        .button3:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/dev-icon.png" class="logo" alt="devtools">
+    <h2>Console Message</h2>
+    <button class="button button3" onclick="info()">.info😍</button>
+    <button class="button button3" onclick="warn()">.warning</button>
+    <button class="button button3" onclick="log()">.log</button>
+    <button class="button button3" onclick="error()">.error</button>
+    <button class="button button3" onclick="clr()">.clear</button>
+    <button class="button button3" onclick="assert()">.assert</button>
+    <button class="button button3" onclick="CountNum()">.count</button>
+    <button class="button button3" onclick="FunctionOne()">.trace</button>
+    <button class="button button3" onclick="timeCalculator()">.time & .timeEnd</button>
+    <button class="button button3" onclick="tbl()">.table</button>
+    <button class="button button3" onclick="GroupDisscurction()">.group & .groupEnd & .groupCollapsed</button>
+    <button class="button button3" onclick="CustomCss()">custom css</button>
+    <button class="button button3" onclick="NetWorkError()">Couse 404</button>
+    <button class="button button3" onclick="CustomError()">Cuuse Error</button>
+    <button class="button button3" onclick="ViolationFunc()">Cause Violation</button>
+</body>
+<script src="console.js"></script>
+
+</html>

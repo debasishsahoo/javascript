@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Function Step into</h1>
+    <button onclick='A()'>Function Step Into</button>
+    <br />
+    <button onclick='err()'>jS Error Catching</button>
+</body>
+<script>
+    //! call back Hell
+    function A() {
+        document.write('A ');
+        B()
+    }
+    function B() {
+        document.write('B ');
+        C();
+        E();
+    }
+    function C() {
+        document.write('C ');
+        setTimeout(F, 20000);
+    }
+    function E() {
+        document.write('E ');
+        F();
+    }
+    function D() {
+        document.write('D ');
+        E();
+    }
+
+    function F() {
+        document.write('Done! ')
+    }
+
+    err = () => {
+        document.write('err Function called')
+        let randValue = Math.random();
+        /*  if (randValue > 0.5) {
+             throw new Error('Error Occured')
+         } */
+        if (randValue > 0.5) {
+            try {
+                throw new Error('Calling From Try Block')
+            }
+            catch (error) {
+                document.write(error)
+            }
+        }
+        //!
+
+    }
+
+
+
+    function Master(){}
+
+
+
+
+</script>
+
+</html>
