@@ -9,7 +9,29 @@
 </head>
 
 <body>
-
+    <h1>Java script Promise</h1>
+    <p>A promise is an obj represent completion or failure on an Async operation.</p>
+    <ul>
+        <li>Pending</li>
+        <li>Fulfilled/Resolve</li>
+        <li>Rejected</li>
+    </ul>
 </body>
+<script>
+    const LoveToSomeOne = new Promise((Resolve, Reject) => {
+        let Fellings = true
+        if (Fellings) {
+            Resolve('I Love You')
+        } else {
+            Reject('I Hate You')
+        }
+    });
+
+    LoveToSomeOne.then(
+        (value) => { console.log(value); },
+        (Error) => { console.log(Error); },
+    );
+
+</script>
 
 </html>
