@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //------------------------------------------------//
+        /* console.log('START');
+        function GetFullName(FN, LN) {
+            setTimeout(function () {
+                console.log('Inside Callback');
+                let name = FN + LN;
+                return name;
+            }, 10000);
+        }
+        let NM = GetFullName('Debasish', 'Sahoo');
+        console.log(NM);
+        console.log('END'); */
+        //------------------------------------------------//
+
+        //------------------------------------------------//
+        /* console.log('START');
+        function GetFullName(FN, LN, callback) {
+            setTimeout(function () {
+                console.log('Inside Callback');
+                let name = FN + LN;
+                callback(name);
+            }, 10000);
+        }
+        let NM = GetFullName('Debasish', 'Sahoo', (NM) => { console.log(NM); });
+        console.log('END'); */
+
+        //------------------------------------------------//
+        function GetFullName(name) {
+            return new Promise((resolve, reject) => {
+                setTimeout(function () {
+                    console.log('Inside Name Callback');
+                    if (name !== '' || typeof (name) !== undefined || typeof (name) !== null || name !== ' ') {
+                        resolve(name);
+                    } else {
+                        reject('Please Provide Your First Name and Last Name');
+                    }
+                }, 1000);
+            })
+        }
+        function GetHobbies(name) {
+            return new Promise(function (resolve, reject) {
+                let hobbies = ['Cricket', 'Vollyball', 'Badmintaion', 'Coding', 'Ludo'];
+                setTimeout(function () {
+                    console.log('Inside Hobbies Callback');
+                    if (name !== '' || typeof (name) !== undefined || typeof (name) !== null || name !== ' ') {
+                        let MyHobby = [];
+                        if (name === 'debasish') {
+                            MyHobby = hobbies[3];
+                        }
+                        else if (name === 'abdul') {
+                            MyHobby = hobbies[3];
+                        }
+                        else if (name === 'anjani') {
+                            MyHobby = hobbies[2];
+                        }
+                        else if (name === 'reshmi') {
+                            MyHobby = hobbies[1];
+                        }
+                        else if (name === 'avjit') {
+                            MyHobby = hobbies[0];
+                        }
+                        else {
+                            MyHobby = hobbies[4];
+                        }
+                        resolve(MyHobby);
+                    }
+                    else {
+                        reject('Please Provide Name');
+                    }
+                }, 2000);
+            })
+        }
+        function GetHobbyDetails(hobby) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    console.log('Inside Details Function');
+                    if (hobby != '') {
+                        let details = {
+                            'Cricket': 'I Love Cricket',
+                            'Vollyball': 'I Love Vollyball',
+                            'Badmintaion': 'I Love Badmintaion',
+                            'Coding': 'I Love Coding',
+                            'Ludo': 'I Love Ludo'
+                        }
+                        resolve(details[hobby]);
+                    }
+                    else {
+                        reject('Please Provide Hobby');
+                    }
+                }, 3000);
+            })
+        }
+
+        /* GetFullName()
+            .then(name => {
+                console.log(name);
+                return GetHobbies(name);
+            })
+            .then(hobby => {
+                console.log(hobby);
+                return GetHobbyDetails(hobby);
+            })
+            .then(details => {
+                console.log(details);
+            })
+            .catch(error => {
+                console.log(error);
+            }) */
+
+
+        async function Display() {
+            try {
+                const Name = await GetFullName('');
+                console.log('Name:', Name);
+                const Hobbies = await GetHobbies(Name);
+                console.log('Hobby:', Hobbies);
+                const Details = await GetHobbyDetails(Hobbies);
+                console.log('Details:', Details);
+            }
+            catch (error) {
+                console.log(error);
+            }
+
+
+        }
+
+        Display();
+
+
+
+
+
+    </script>
+</body>
+
+</html>
