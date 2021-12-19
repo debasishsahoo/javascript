@@ -12,12 +12,128 @@
     <h1>Java script Promise</h1>
     <p>A promise is an obj represent completion or failure on an Async operation.</p>
     <ul>
-        <li>Pending</li>
-        <li>Fulfilled/Resolve</li>
-        <li>Rejected</li>
+        <li>Pending:-Inital Stage,Not yet Fulfilled or Rejected</li>
+        <li>Fulfilled/Resolve:-Promise Complted</li>
+        <li>Rejected:-Promise Failed</li>
     </ul>
+    <br />
+
+    <img src="1.png" alt="">
+    <br />
+    <h2>Promise Components</h2>
+    <ul>
+        <li>Promise()</li>
+        <li>.then()</li>
+        <li>.catch()</li>
+        <li>.finally()</li>
+    </ul>
+    <br />
+    <h4>Promise()</h4>
+    <pre>
+        Promise(excutor)
+
+        //This is called Producing Code
+        Syntex:                         
+        const promiseobj=new Promise((resolve,reject)=>{
+            //Asyncronous Code
+            resolve(Value);
+            reject(Error);
+        })
+        
+        promiseobj is the object
+        new is KeyWord
+        Promise is the constructor
+        (resolve,reject)=>{} is the excutor
+        resolve is the function to resolve the promise
+        reject is the function to reject the promise
+
+
+function myFunction(){
+    return new Promise((resolve,reject)=>{
+        //Asyncronous Code
+        resolve(Value);
+        reject(Error);
+    })
+}                           
+    </pre>
+    <br />
+    <h4>.then()</h4>
+    <pre>
+  .then() returns A promise
+  it will take the following parameters
+
+    1.onResolve:-Callback function for the Success.
+    2.onRejected:-Callback function for the failure.
+
+    .then(onResolve,onRejected)
+    onResolve:-A function called if the Promise is Fulfilled,This functuion has one argument which is the Fulfilled value of the Promise. 
+    onRejected:- A function called if the Promise is rejected,This functuion has one argument which is the Rejected reason of the Promise.
+     
+//Consuming Code
+    promiseObj.then(
+        value=>{console.log(value)},
+        error=>{console.log(error)}
+        )
+
+
+//Channing
+
+const promicObj=new Promise((resolve,reject)=>{
+    //Some Asyncronous Code
+    resolve(value);
+}).then(
+    //Some Asyncronous Code;
+    return Promise()
+).then(
+    //Some Asyncronous Code;
+    return Promise()
+)
+    
+   </pre>
+    <br />
+    <h4>.catch()</h4>
+    <pre>
+        const promicObj=new Promise((resolve,reject)=>{
+            //Some Asyncronous Code
+            resolve(value);
+        }).then(
+            //Some Asyncronous Code;
+            return Promise()
+        ).catch(
+            (error)=>{
+                console.log(error);
+            }
+        )
+    </pre>
+    <br />
+    <pre>
+        .finally()   //Act as Defult it is Excuted either Resolve or Rejected
+
+        const promicObj=new Promise((resolve,reject)=>{
+            //Some Asyncronous Code
+            resolve(value);
+        }).then(
+            //Some Asyncronous Code;
+            return Promise()
+        ).catch(
+            (error)=>{
+                console.log(error);
+            }
+        ).finally(
+            ()=>{
+                console.log("Finally");
+            }
+        )
+        
+    </pre>
+
+
+
+
+
 </body>
 <script>
+    /* //!Producer Code
     const LoveToSomeOne = new Promise((Resolve, Reject) => {
         let Fellings = true
         if (Fellings) {
@@ -27,10 +143,62 @@
         }
     });
 
+    //!Consumer Code
     LoveToSomeOne.then(
         (value) => { console.log(value); },
         (Error) => { console.log(Error); },
+    ); */
+
+
+    /* //!Producer Code
+    const LoveToSomeOne = new Promise((Resolve, Reject) => {
+        let Fellings = true
+        if (Fellings) {
+            Resolve('I Love You')
+        } else {
+            Reject('I Hate You')
+        }
+    }).then(//!Consumer Code
+        (value) => console.log(value),
+    ).catch((Error) => console.log(Error)); */
+
+    const promiseobj = new Promise((resolve, reject) => {
+        let num = 10;
+        resolve(num);
+    }).then(
+        (value) => {
+            console.log(value);
+            return value + 100;
+        },
+    ).then(
+        (value) => {
+            console.log(value);
+            return value + 100;
+        },
+    ).then(
+        (value) => { console.log(value); }
+    ).catch(
+        (error) => { console.log(error); }
+    ).finally(
+        () => { console.log("Finally"); }
     );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 

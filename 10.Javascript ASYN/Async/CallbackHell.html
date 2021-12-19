@@ -43,20 +43,31 @@
                 console.log('Inside Name Callback');
                 let name = FN + LN;
                 callback(name);
-            }, 10000);
+            }, 3000);
         }
-
         function GetHobbies(name, callback) {
             setTimeout(function () {
                 console.log('Inside Hobbies Callback');
-                callback(['Cricket', 'Football']);
-            }, 10000);
-
+                callback('Coding');
+            }, 5000);
         }
+        function GetLanguage(language, callback) {
+            setTimeout(function () {
+                console.log('Inside Language Callback');
+                callback('C++');
+            }, 7000);
+        }
+
         let NM = GetFullName('Debasish', 'Sahoo',
             (NM) => {
-                console.log(NM);
-                GetHobbies(NM, (hobbies) => { console.log(hobbies); })
+                console.log('Name:', NM);
+                GetHobbies(NM, (hobby) => {
+                    console.log('Hobby:', hobby);
+                    GetLanguage(hobby, (Language) => {
+                        console.log('Language:', Language);
+                    });
+
+                })
             });
 
 
