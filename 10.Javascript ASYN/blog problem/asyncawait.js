@@ -41,3 +41,13 @@ async function init() {
 }
 
 init();
+
+//Async & Await With Fetch
+async function FecthData() {
+    const response = await fetch('https://fakestoreapi.com/products');
+    const data = await response.json();
+    console.table('data:', data)
+
+}
+
+FecthData();
