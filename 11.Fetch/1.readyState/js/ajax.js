@@ -1,4 +1,6 @@
 document.getElementById("btntxt").addEventListener("click", MakeRequest);
+
+//ready State Status Code
 /* function MakeRequest() {
     console.log('click')
     const xhr = new XMLHttpRequest();
@@ -20,7 +22,7 @@ document.getElementById("btntxt").addEventListener("click", MakeRequest);
     xhr.send();
 } */
 
-
+//ready State Status Code
 function MakeRequest() {
     console.log('click')
     const xhr = new XMLHttpRequest();
@@ -53,4 +55,5 @@ function MakeRequest() {
     };
     xhr.send();
 }
+
 
