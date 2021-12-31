@@ -1,5 +1,5 @@
 document.getElementById("btntxt").addEventListener("click", MakeRequest);
-
+let dt = document.getElementById("dispaly");
 //Onload 
 function MakeRequest() {
     console.log('click')
@@ -7,7 +7,7 @@ function MakeRequest() {
     xhr.open("GET", "data.txt", true);
     xhr.onload = () => {
         if (xhr.status === 200) {
-            console.info(xhr.responseText);
+            dt.innerHTML = xhr.responseText;
         }
         else {
             console.error("Error: " + xhr.status);
