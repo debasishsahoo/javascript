@@ -9,7 +9,41 @@
 </head>
 
 <body>
-   
+    <h1>XMLHttpRequest.responseType</h1>
+    <br />
+    <p><b>" ":</b>An empty responseType string is the same as "text", the default type.</p>
+    <br />
+    <p><b>"arraybuffer":</b>The response is a JavaScript ArrayBuffer containing binary data.</p>
+    <br />
+    <p><b>"blob":</b>The response is a Blob object containing the binary data.</p>
+
+    <p><b>"document":</b>
+        The response is an HTML Document or XML XMLDocument, as appropriate based on the MIME type of the received data.
+        See
+        HTML in XMLHttpRequest to learn more about using XHR to fetch HTML content.</p>
+
+    <p><b>"json":</b>The response is a JavaScript object created by parsing the contents of received data as JSON.</p>
+
+
+    <p><b>"text":</b>
+        The response is a text in a DOMString object.</p>
+
+    <p><b>"ms-stream":</b>
+        The response is part of a streaming download; this response type is only allowed for download requests, and is
+        only
+        supported by Internet Explorer.
+    </p>
+
+
+
+
+
+
+
+
+
+
+
 
     <input type='submit' value='Get Text Value' id='btntxt'></input>
 </body>
