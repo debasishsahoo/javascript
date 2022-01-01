@@ -5,20 +5,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>readyState</title>
 </head>
 
 <body>
-    <pre>
-        //Ajax 5 states of requests
-        0   UNSENT  open() has not been called yet.
-        1   OPENED  send() has been called.
-        2   HEADERS_RECEIVED    send() has been called, and headers and status are available.
-        3   LOADING Downloading; responseText holds partial data.
-        4   DONE    The operation is complete.
-    </pre>
+    <h1>readyState</h1>
+        <table border="1">
+            <tr>
+                <td>UNSENT</td>
+                <td>UNSENT (numeric value 0)</td>
+                <td>UNSENT open() has not been called yet.</td>
+                <td>The object has been constructed.</td>
+            </tr>
+            <tr>
+                <td>opened</td>
+                <td>OPENED (numeric value 1)</td>
+                <td>OPENED send() has been called.</td>
+                <td>The open() method has been successfully invoked. During this state request headers can be set using
+                    setRequestHeader() and the fetch can be initiated using the send() method.</td>
+            </tr>
+            <tr>
+                <td>headers received</td>
+                <td>HEADERS_RECEIVED (numeric value 2)</td>
+                <td>HEADERS_RECEIVED send() has been called, and headers and status are available.</td>
+                <td>All redirects (if any) have been followed and all headers of a response have been received.</td>
+            </tr>
+            <tr>
+                <td>loading</td>
+                <td>LOADING (numeric value 3)</td>
+                <td>LOADING Downloading; responseText holds partial data.</td>
+                <td>The response body is being received.</td>
+            </tr>
+            <tr>
+                <td>done</td>
+                <td>DONE (numeric value 4)</td>
+                <td> DONE The operation is complete.</td>
+                <td>The data transfer has been completed or something went wrong during the transfer (e.g., infinite
+                    redirects).
+                </td>
+            </tr>
+        </table>
+        <br />
+        <p>An XMLHttpRequest object travels them in the order 0 → 1 → 2 → 3 → … → 3 → 4. State 3 repeats every time a
+            data
+            packet is received over the network.</p>
 
-    <input type='submit' value='Get Text Value' id='btntxt'></input>
+
+        <input type='submit' value='Get Text Value' id='btntxt'></input>
 </body>
 <script src='./js/ajax.js'></script>
 
