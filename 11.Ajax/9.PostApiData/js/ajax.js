@@ -4,14 +4,16 @@ document.getElementById("btntxt").addEventListener("click", MakeRequest);
 function MakeRequest() {
     console.log('click')
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "data.txt", true);
+    xhr.open("POST", "http://dummy.restapiexample.com/api/v1/create", true);
+    xhr.responseType = "json";
     xhr.onload = () => {
         if (xhr.status === 200) {
-            console.info(xhr.responseText);
+            console.info(xhr.response);
         }
         else {
             console.error("Error: " + xhr.status);
         }
     }
-    xhr.send();
+    mydata = { "name": "Debasish", "salary": "12300000000", "age": "38" }
+    xhr.send(mydata);
 }
