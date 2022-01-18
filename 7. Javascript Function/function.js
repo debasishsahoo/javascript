@@ -47,6 +47,11 @@ function add() {
 console.log(add(1, 2));
 console.log(add(1, 2, 3, 4, 5));
 
+
+
+
+
+
 //Function hoisting
 let b = showMe(); // a hoisting example
 console.log('b:', b)
