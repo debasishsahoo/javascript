@@ -36,8 +36,14 @@ function say(message) {
     console.log(message);
 }
 
+
+
+
+
+
 function add() {
     let sum = 0;
+    
     for (let i = 0; i < arguments.length; i++) {
         sum += arguments[i];
     }
@@ -46,6 +52,26 @@ function add() {
 
 console.log(add(1, 2));
 console.log(add(1, 2, 3, 4, 5));
+
+
+
+let a = compare(5, 2);
+console.log('a:', a);
+
+
+function compare(a, b) {
+    if (a > b) {
+        return -1;
+    } else if (a < b) {
+        return 1;
+    }
+    return 0;
+}
+
+
+
+
+
 
 
 
@@ -74,12 +100,30 @@ console.log('sum:', sum(1, 2));
 result = add(10, 20);
 console.log('result:', result)
 
+
+
+
+
+
+
+
+
 //Passing a function to another function
 function average(a, b, fn) {
     return fn(a, b) / 2;
 }
 result = average(10, 20, sum);
 console.log('result:', result);
+
+
+
+
+
+
+
+
+
+
 
 //Returning functions from functions
 function compareBy(propName) {
@@ -111,6 +155,12 @@ console.table(products);
 console.log('Products sorted by price:');
 products.sort(compareBy('price'));
 console.table(products);
+
+
+
+
+
+
 
 
 

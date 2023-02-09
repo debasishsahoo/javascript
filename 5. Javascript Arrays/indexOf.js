@@ -10,6 +10,9 @@ console.log(scores.indexOf(10));
 console.log(scores.indexOf(30));
 console.log(scores.indexOf(50));
 console.log(scores.indexOf(20));
+console.log(scores.indexOf(40));
+console.log(scores.indexOf(10));
+console.log(scores.indexOf(20));
 
 //fromIndex()
 console.log(scores.indexOf(20,-1));

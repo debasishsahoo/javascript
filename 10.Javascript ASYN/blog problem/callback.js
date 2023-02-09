@@ -28,6 +28,17 @@ createpost = (post, callback) => {
 
 createpost({ title: 'Post Five', body: 'This is post Five' }, getpost);
 
+
+
+
+
+
+
+
+
+
+
+
 for (let i = 0; i <= 20; i++) {
     ((index) => {
         setTimeout(() => {

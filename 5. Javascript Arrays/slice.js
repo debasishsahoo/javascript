@@ -10,6 +10,6 @@ var newNumbers = numbers.slice();
 console.log('newNumbers:', newNumbers)
 
 //Copy a portion of an array
-var colors = ['red','green','blue','yellow','purple'];
-var rgb = colors.slice(0,3);
+var colors = ['red', 'green', 'blue', 'yellow', 'purple'];
+var rgb = colors.slice(0, 3);
 console.log(rgb);

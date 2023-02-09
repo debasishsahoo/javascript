@@ -14,6 +14,10 @@ numbers.sort(function (a, b) {
 
 console.log(numbers);
 
+
+
+
+
 let animals = ['cat', 'dog', 'elephant', 'bee', 'ant'];
 animals.sort();
 console.log(animals);

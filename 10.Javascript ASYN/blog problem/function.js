@@ -22,6 +22,7 @@ createpost = (post) => {
     }, 2000);
 }
 
+
 getpost();
 createpost({ title: 'Post Five', body: 'This is post Five' });
 

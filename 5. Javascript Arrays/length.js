@@ -8,8 +8,10 @@ console.log(colors.length);
 colors = [];
 console.log(colors.length);
 
+
 //Sparse arrays
 let numbers = [10, , 20, 30];
+//^?
 console.log(numbers.length);
 
 

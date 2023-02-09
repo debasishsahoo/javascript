@@ -13,3 +13,7 @@ for (let i = 0; i < ranks.length; i++) {
 ranks.forEach(function (e) {
     console.log(e);
 });
+
+ranks.forEach(e => {
+    console.log(e);
+});

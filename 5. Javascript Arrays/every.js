@@ -1,7 +1,9 @@
-/**
- * JavaScript Array every: Determining If All Array Elements Pass a Test
- * 
+/* 
+  ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ JavaScript Array every: Determining If All Array Elements Pass a Test                                           │
+  └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
  */
+
 
 //Checking array elements using the for loop
 let numbers = [1, 3, 5];

@@ -5,6 +5,7 @@
 let numbers = [1, 2, 3];
 
 let sum = 0;
+
 for (let i = 0; i < numbers.length; i++) {
     sum += numbers[i];
 }
@@ -14,6 +15,21 @@ sum = numbers.reduce(function (accumulator, current) {
     return accumulator + current;
 });
 console.log(sum);
+
+//reduce((sum,1){
+//sum=sum+1
+//})
+
+//reduce((1,2){
+//sum=1+2
+//})
+
+//reduce((3,3){
+//sum=3+3
+//})
+
+
+
 
 
 
@@ -38,6 +54,7 @@ let shoppingCart = [{
 let total = shoppingCart.reduce(function (acc, curr) {
     return acc + curr.qty * curr.price;
 },0);
+
 
 console.log(total);
 
