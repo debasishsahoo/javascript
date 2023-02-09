@@ -183,6 +183,8 @@ let sciCourses = ["Mth101", "Chm201", "Bio301", "Mth203", "Mth205", 'Mth2346'];
 //! filtr,map,function,arraow function  but no loop
 
 
+//!https://stackabuse.com/guide-to-javascripts-filter-method/
+
 
 
 
