@@ -1,0 +1,18 @@
+/* Define the original and new styles for the button */
+.original-class {
+    background-color: rgb(233, 218, 11);
+    color: black;
+    border: 1px solid blue;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.new-class {
+    background-color: rgb(239, 58, 13);
+    color: white;
+    border: 1px solid green;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}

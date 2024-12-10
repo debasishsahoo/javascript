@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging in Javascript</title>
+</head>
+
+<body>
+    <h4>
+        Debugging demonstrations using Debugger keyword
+    </h4>
+    <p>
+        If the debugger is turned on the code stops
+        execution at the start of the debugger
+    </p>
+    evens :<p id="test"></p>
+    <script>
+        function findEvenNumbers(arr) {
+            let evenNumbers = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0) {
+                    debugger; // Pauses here to inspect each even number
+                    evenNumbers.push(arr[i]);
+                }
+            }
+            return evenNumbers;
+        }
+
+        let numbers = [1, 2, 3, 4, 5, 6];
+        let evens = findEvenNumbers(numbers);
+        console.log('Even Numbers:', evens);
+        document.getElementById("test").innerHTML = evens;
+    </script>
+</body>
+
+</html>

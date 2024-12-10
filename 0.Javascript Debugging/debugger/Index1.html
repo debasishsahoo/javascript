@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging in Javascript</title>
+</head>
+
+<body>
+    <h4>
+        Debugging demonstrations using Debugger keyword
+    </h4>
+    The solution of 20 * 5 is:
+    <p id="test"></p>
+    <p>
+        If the debugger is turned on the code stops
+        execution at the start of the debugger
+    </p>
+    <script>
+        const x = 20;
+        const y = 5;
+        const z = x * y;
+        debugger;
+        document.getElementById("test").innerHTML = z;
+    </script>
+</body>
+
+</html>

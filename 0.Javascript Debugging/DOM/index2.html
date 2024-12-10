@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button id="myButton" class="original-class" type="button">Click Me</button>
+    <script>
+      function changeClass() {
+        let button = document.getElementById("myButton");
+        button.setAttribute("class", "new-class");
+      }
+      document
+        .getElementById("myButton")
+        .addEventListener("click", changeClass);
+    </script>
+  </body>
+</html>

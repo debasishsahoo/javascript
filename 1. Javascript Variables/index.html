@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First Js Program</title>
 </head>
+
 <body>
-<script language="javascript" type="text/javascript">
- alert('Hello World')
-</script>
+    <h2>Demo JavaScript in Head</h2>
+    <p id="txt">This is a Paragraph.</p>
+
+    <button type="button" onclick="fun()">Click it</button>
+
+    <script>
+        function fun() {
+            document.getElementById("txt").innerHTML = "Paragraph changed.";
+        }
+    </script>
 </body>
+
 </html>

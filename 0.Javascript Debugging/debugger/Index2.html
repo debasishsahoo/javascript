@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging in Javascript</title>
+</head>
+
+<body>
+    <h4>
+        Debugging demonstrations using Debugger keyword
+    </h4>
+    <p>
+        If the debugger is turned on the code stops
+        execution at the start of the debugger
+    </p>
+    Area Is :<p id="test"></p>
+    <script>
+        function calculateArea(length, width) {
+            let area = length * width;
+            debugger; // Code execution will pause here
+            return area;
+        }
+        let result = calculateArea(5, 10);
+        document.getElementById("test").innerHTML = result;
+    </script>
+</body>
+
+</html>
