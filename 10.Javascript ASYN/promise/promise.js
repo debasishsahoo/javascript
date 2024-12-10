@@ -31,11 +31,18 @@ createComplain = (complain) => {
 }
 
 createComplain({ id: 6, name: 'Raju', complain: 'I am not happy with PYTHON' })
-    .then(getComplains)
+    .then(getComplains).then(getComplains).then(getComplains).then(getComplains).then(getComplains)
     .catch((err) => {
         console.log(err);
     });
 
+
+
+
+
+
+
+    
 for (let i = 0; i <= 20; i++) {//< =
     ((index) => {
         setTimeout(() => {

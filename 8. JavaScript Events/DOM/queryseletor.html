@@ -24,6 +24,8 @@
         <li>The</li>
         <li>test</li>
     </ul>
+
+
     <ul>
         <li>has</li>
         <li>passed</li>
@@ -40,10 +42,12 @@
     <!--closest-->
 
     <h1>Contents</h1>
+
+    
     <div class="contents">
         <ul class="book">
             <li class="chapter">Chapter 1</li>
-            <li class="chapter">Chapter 1</li>
+            <li class="chapter">Chapter 2</li>
         </ul>
     </div>
 
@@ -61,17 +65,25 @@
             }
         }
 
-        let elements = document.querySelectorAll('ul > li:last-child');
+        // let elements = document.querySelectorAll('ul > li:last-child');
 
-        for (let elem of elements) {
-            console.log(elem.innerHTML);
-        }
-        console.log('-------------matches---------------');
-        for (let elem of document.body.children) {
-            if (elem.matches('a[href$="zip"]')) {
-                console.log("The archive reference: " + elem.href);
-            }
-        }
+        // for (let elem of elements) {
+        //     console.log(elem.innerHTML);
+        // }
+
+
+
+        // console.log('-------------matches---------------');
+        // for (let elem of document.body.children) {
+        //     if (elem.matches('a[href$="zip"]')) {
+        //         console.log("The archive reference: " + elem.href);
+        //     }
+        // }
+
+
+
+
+
         console.log('--------------closest--------------');
         let chapter = document.querySelector('.chapter');
         let a = chapter.closest('.book');

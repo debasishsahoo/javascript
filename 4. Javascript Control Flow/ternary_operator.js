@@ -8,10 +8,20 @@ if (age > 16) {
 }
 console.log('canDrive: ' + canDrive)
 
+
+
+
+
 //ternary operator
 var age = 19;
 var canDrive = age > 16 ? 'yes' : 'no';
 console.log(canDrive)
+
+
+
+
+
+
 
 //Set Default Paramiter
 
@@ -26,15 +36,15 @@ fun(45)
 
 //Perform multiple operations
 var auth = 1
-var regirect = auth ? (
+var redirect = auth ? (
     console.log('you will redirect to admin area'),
     '/admin'
 
 ) : (
-    console.log('Access Denide'),
+    console.log('Access Denied'),
     '/403'
 )
-console.log(regirect)
+console.log(redirect)
 
 
 //Simplify ternary operator

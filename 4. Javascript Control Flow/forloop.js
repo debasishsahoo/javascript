@@ -10,7 +10,7 @@ for (; j < 10; j += 2) {
     console.log(j);
 }
 
-//for loop without the condition
+//for loop without the condition4
 for (let j = 1; ; j += 2) {
     console.log(j);
     if (j > 10) {

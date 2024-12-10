@@ -34,7 +34,7 @@ Main(100, 102, function (a) {
 
 Main(30, 20, a => { console.log(a); });
 
-//TODO:Syncronous CallBack:It waits for the function to complete its execution and then it executes the next function.
+//TODO:Synchronous CallBack:It waits for the function to complete its execution and then it executes the next function.
 console.log('START');
 Show = () => {
     console.log('I am Show Function');
@@ -45,7 +45,7 @@ hi = (CallBack) => {
 hi(Show);
 console.log('END');
 
-//TODO:Asyncronous CallBack:It executes the next function after the function completes its execution.it never waits for the each operation to complete.rather it executes the next function after the each operation.
+//TODO:Asynchronous CallBack:It executes the next function after the function completes its execution.it never waits for the each operation to complete.rather it executes the next function after the each operation.
 console.log('START');
 setTimeout(function View() {
     console.log('I am View Function');

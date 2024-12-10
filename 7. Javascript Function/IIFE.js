@@ -71,8 +71,8 @@ let y = function () {
 
 y()
 
-let z=()=>{
-    
+let z = () => {
+
 }
 
 

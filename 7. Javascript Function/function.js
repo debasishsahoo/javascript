@@ -128,8 +128,7 @@ console.log('result:', result);
 //Returning functions from functions
 function compareBy(propName) {
     return function (a, b) {
-        let x = a[propName],
-            y = b[propName];
+        let x = a[propName], y = b[propName];
         if (x > y) {
             return 1;
         } else if (x < y) {

@@ -3,7 +3,7 @@ const Complains = [
     { id: 2, name: 'Resam', complain: 'I am not happy java' },
     { id: 3, name: 'Rumana', complain: 'I am not happy C++' },
     { id: 4, name: 'Anjani', complain: 'I am not happy with js' },
-    { id: 5, name: 'Dinda', complain: 'I am not happyb with GATE' },
+    { id: 5, name: 'Dinda', complain: 'I am not happy with GATE' },
 ];
 
 getComplains = () => {

@@ -37,4 +37,5 @@ let range = {
 let isInRange = numbers.every(function (e) {
     return e >= this.min && e <= this.max;
 }, range);
+console.log(isInRange)
 

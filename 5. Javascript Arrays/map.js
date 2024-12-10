@@ -1,10 +1,6 @@
 /**
  * JavaScript Array map
  */
-
-
-
-
 let circles = [10, 30, 50];
 let areas = [];
 let area = 0;
@@ -30,12 +26,6 @@ function circleArea(radius) {
 }
 areas = circles.map(circleArea);
 console.log(areas);
-
-
-
-
-
-
 
 
 
