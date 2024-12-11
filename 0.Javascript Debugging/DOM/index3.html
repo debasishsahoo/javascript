@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detect Node Removal</title>
+    <style>
+      #toRemove {
+        background-color: lightcoral;
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        font-size: 18px;
+        color: white;
+        border: 2px solid darkred;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toRemove">This element will be removed after 10 seconds.</div>
+    <script>
+      function removeElement() {
+        let element = document.getElementById("toRemove");
+        element.remove();
+      }
+
+      setTimeout(removeElement, 20000);
+    </script>
+  </body>
+</html>

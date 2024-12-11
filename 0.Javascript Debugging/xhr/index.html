@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XHR Example</title>
+    <style>
+      #output {
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fetch Data Using XHR</h1>
+    <button id="fetchButton" type="button">Fetch Posts</button>
+    <div id="output"></div>
+
+    <script>
+      // Function to fetch data using XMLHttpRequest
+      function fetchDataUsingXHR() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts");
+        xhr.onload = function () {
+          const output = document.getElementById("output");
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            output.innerHTML =
+              "<h2>Fetched Posts:</h2>" +
+              response
+                .slice(0, 5)
+                .map(
+                  (post) => `
+                    <div style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc;">
+                        <strong>Title:</strong> ${post.title}<br>
+                        <strong>Body:</strong> ${post.body}
+                    </div>
+                `
+                )
+                .join("");
+          } else {
+            output.innerHTML = `<p style="color: red;">Request failed with status: ${xhr.status}</p>`;
+          }
+        };
+        xhr.onerror = function () {
+          document.getElementById(
+            "output"
+          ).innerHTML = `<p style="color: red;">An error occurred during the request.</p>`;
+        };
+        xhr.send();
+      }
+
+      // Attach event listener to the button to trigger the request
+      document
+        .getElementById("fetchButton")
+        .addEventListener("click", fetchDataUsingXHR);
+    </script>
+  </body>
+</html>
