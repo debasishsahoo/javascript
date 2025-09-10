@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currying Demo for Web Development</title>
+<style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h2 { color: #333; }
+    input, button { margin: 5px 0; padding: 5px; }
+    .output { margin-top: 10px; background: #f0f0f0; padding: 10px; border-radius: 5px; }
+    section { margin-bottom: 30px; }
+</style>
+</head>
+<body>
+
+<h1>Currying Demo for Web Development</h1>
+
+<section id="math">
+    <h2>1. Math Operations</h2>
+    <input type="number" id="mathA" placeholder="a">
+    <input type="number" id="mathB" placeholder="b">
+    <input type="number" id="mathC" placeholder="c">
+    <button onclick="runAdd()">Add</button>
+    <div class="output" id="mathOutput"></div>
+</section>
+
+<section id="strings">
+    <h2>2. String Operations</h2>
+    <input type="text" id="stringInput" placeholder="Enter text">
+    <button onclick="removeSpacesFunc()">Remove Spaces</button>
+    <button onclick="replaceCommasFunc()">Replace Commas</button>
+    <div class="output" id="stringOutput"></div>
+</section>
+
+<section id="arrays">
+    <h2>3. Array Operations</h2>
+    <input type="text" id="arrayInput" placeholder="Enter numbers comma-separated">
+    <button onclick="doubleArray()">Double Numbers</button>
+    <button onclick="filterEvenArray()">Filter Evens</button>
+    <div class="output" id="arrayOutput"></div>
+</section>
+
+<section id="validation">
+    <h2>4. Form Validation</h2>
+    <input type="text" id="emailInput" placeholder="Enter email">
+    <button onclick="validateEmailFunc()">Validate Email</button>
+    <div class="output" id="validationOutput"></div>
+</section>
+
+<section id="logging">
+    <h2>5. Curried Logging</h2>
+    <input type="text" id="logMessage" placeholder="Enter message">
+    <button onclick="logError()">Log Error</button>
+    <button onclick="logInfo()">Log Info</button>
+    <div class="output" id="logOutput"></div>
+</section>
+
+<script>
+// Basic curry function
+function curry(fn) {
+    return function curried(...args) {
+        if (args.length >= fn.length) return fn.apply(this, args);
+        return (...args2) => curried(...args, ...args2);
+    };
+}
+
+// ---- 1. Math Operations ----
+function add(a, b, c) { return a + b + c; }
+const curriedAdd = curry(add);
+
+function runAdd() {
+    const a = +document.getElementById('mathA').value;
+    const b = +document.getElementById('mathB').value;
+    const c = +document.getElementById('mathC').value;
+    const result = curriedAdd(a)(b)(c);
+    document.getElementById('mathOutput').innerText = `Result: ${result}`;
+}
+
+// ---- 2. String Operations ----
+const curriedReplace = curry((search, replace, str) => str.replace(new RegExp(search, 'g'), replace));
+const removeSpaces = curriedReplace(' ', '');
+const replaceCommas = curriedReplace(',', ';');
+
+function removeSpacesFunc() {
+    const str = document.getElementById('stringInput').value;
+    document.getElementById('stringOutput').innerText = removeSpaces(str);
+}
+
+function replaceCommasFunc() {
+    const str = document.getElementById('stringInput').value;
+    document.getElementById('stringOutput').innerText = replaceCommas(str);
+}
+
+// ---- 3. Array Operations ----
+const curriedMap = curry((fn, arr) => arr.map(fn));
+const curriedFilter = curry((pred, arr) => arr.filter(pred));
+
+const double = x => x * 2;
+const isEven = x => x % 2 === 0;
+
+function doubleArray() {
+    const arr = document.getElementById('arrayInput').value.split(',').map(Number);
+    const result = curriedMap(double)(arr);
+    document.getElementById('arrayOutput').innerText = result.join(', ');
+}
+
+function filterEvenArray() {
+    const arr = document.getElementById('arrayInput').value.split(',').map(Number);
+    const result = curriedFilter(isEven)(arr);
+    document.getElementById('arrayOutput').innerText = result.join(', ');
+}
+
+// ---- 4. Form Validation ----
+const curriedValidate = curry((rule, message, value) => rule(value) ? {valid:true} : {valid:false, message});
+const validateEmail = curriedValidate(v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), 'Invalid email');
+
+function validateEmailFunc() {
+    const email = document.getElementById('emailInput').value;
+    const result = validateEmail(email);
+    document.getElementById('validationOutput').innerText = result.valid ? 'Valid email' : result.message;
+}
+
+// ---- 5. Curried Logging ----
+const curriedLog = curry((level, namespace, message) => {
+    const timestamp = new Date().toISOString();
+    const logText = `[${timestamp}] ${level.toUpperCase()} ${namespace}: ${message}`;
+    document.getElementById('logOutput').innerText += logText + '\n';
+});
+
+const errorLog = curriedLog('error');
+const infoLog = curriedLog('info');
+
+const dbErrorLog = errorLog('database');
+const apiInfoLog = infoLog('api');
+
+function logError() {
+    const msg = document.getElementById('logMessage').value;
+    dbErrorLog(msg);
+}
+
+function logInfo() {
+    const msg = document.getElementById('logMessage').value;
+    apiInfoLog(msg);
+}
+
+</script>
+</body>
+</html>

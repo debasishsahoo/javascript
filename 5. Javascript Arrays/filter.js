@@ -53,18 +53,14 @@ const results = [
     { id: 006, percentage: 59.7 },
     { id: 007, percentage: 63.7 }
 ]
-
 let Data1 = [1, 2, undefined, 4, undefined, undefined, 7, 8, 9]
-
-
 let Data2 = [1, 2, 0, 4, 0, 0, 7, 8, 9]
-
 
 //! Q1.Only Show Student id of more then 80%
 
-//! Q2. Only Show me number not the "undefined"
+//! Q2. Only Show me number not the "undefined" from Data1
 
-//! Q3. Only Show me number not the "0"
+//! Q3. Only Show me number not the "0" from Data2
 
 //! Q4. Create you Bio Data with Html,Css,Bootsrap
 

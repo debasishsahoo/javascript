@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Async Functions Interactive Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript Async Functions Interactive Demo</h1>
+
+    <button id="fetchUserBtn">Fetch User Data</button>
+    <button id="processOrderBtn">Process User Order</button>
+    <button id="parallelFetchBtn">Parallel Fetch Users</button>
+    <button id="sequentialVsParallelBtn">Sequential vs Parallel</button>
+    <button id="asyncGeneratorBtn">Async Generator Consumption</button>
+    <button id="robustFunctionBtn">Robust Async Function with Retries</button>
+    <button id="processorBtn">Custom Async Processor</button>
+
+    <div id="output">Results will appear here...</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

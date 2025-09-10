@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Recursion Utilities Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input, button {
+            margin: 5px;
+            padding: 8px;
+        }
+
+        #output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Recursion Utilities Interactive Demo</h1>
+
+    <div class="form-group">
+        <label for="factorialInput">Factorial of (number):</label>
+        <input type="number" id="factorialInput" placeholder="Enter number" value="5"/>
+        <button onclick="runFactorial()">Compute Factorial</button>
+    </div>
+
+    <div class="form-group">
+        <label for="fibonacciInput">Fibonacci of (number):</label>
+        <input type="number" id="fibonacciInput" placeholder="Enter number" value="10"/>
+        <button onclick="runFibonacci()">Compute Fibonacci</button>
+    </div>
+
+    <div class="form-group">
+        <label for="powerBase">Power Calculation - Base:</label>
+        <input type="number" id="powerBase" placeholder="Base" value="2"/>
+        <label for="powerExp">Exponent:</label>
+        <input type="number" id="powerExp" placeholder="Exponent" value="10"/>
+        <button onclick="runPower()">Compute Power</button>
+    </div>
+
+    <div class="form-group">
+        <label for="palindromeInput">Palindrome Check (string):</label>
+        <input type="text" id="palindromeInput" placeholder="Enter text" value="A man a plan a canal Panama"/>
+        <button onclick="runPalindrome()">Check Palindrome</button>
+    </div>
+
+    <div class="form-group">
+        <label for="flattenInput">Array to Flatten (comma-separated, arrays in []):</label>
+        <input type="text" id="flattenInput" placeholder="E.g. 1,[2,3],[4,[5,6]],7" value="1,[2,3],[4,[5,6]],7"/>
+        <button onclick="runFlatten()">Flatten Array</button>
+    </div>
+
+    <div class="form-group">
+        <label for="permInput">Array for Permutations (comma-separated):</label>
+        <input type="text" id="permInput" placeholder="E.g. 1,2,3" value="1,2,3"/>
+        <button onclick="runPermutations()">Generate Permutations</button>
+    </div>
+
+    <div class="form-group">
+        <label for="evenOddInput">Number to Check Even/Odd:</label>
+        <input type="number" id="evenOddInput" placeholder="Enter number" value="4"/>
+        <button onclick="runEvenOdd()">Check Even / Odd</button>
+    </div>
+
+    <div id="output">Results will appear here...</div>
+
+    <script src="recursion-app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Factory Pattern Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+        section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Factory Pattern Web App</h1>
+
+    <section>
+        <h2>Create Person</h2>
+        <input type="text" id="personName" placeholder="Name" />
+        <input type="number" id="personAge" placeholder="Age" />
+        <input type="email" id="personEmail" placeholder="Email" />
+        <button id="createPerson">Create Person</button>
+        <p id="personOutput"></p>
+    </section>
+
+    <section>
+        <h2>Bank Account Actions</h2>
+        <button id="depositButton">Deposit $100</button>
+        <button id="withdrawButton">Withdraw $50</button>
+        <button id="showBalance">Show Balance</button>
+        <p id="accountOutput"></p>
+    </section>
+
+    <section>
+        <h2>Event Emitter</h2>
+        <button id="emitEvent">Emit User Login Event</button>
+        <p id="eventOutput"></p>
+    </section>
+
+    <script>
+        // Person Factory
+        function createPerson(name, age, email) {
+            return {
+                name,
+                age,
+                email,
+                introduce() {
+                    return `Hi, I'm ${this.name}, ${this.age} years old.`;
+                }
+            };
+        }
+
+        document.getElementById('createPerson').addEventListener('click', () => {
+            const name = document.getElementById('personName').value;
+            const age = parseInt(document.getElementById('personAge').value);
+            const email = document.getElementById('personEmail').value;
+
+            const person = createPerson(name, age, email);
+            document.getElementById('personOutput').textContent = person.introduce();
+        });
+
+        // Bank Account Factory with Closure
+        function createBankAccount(accountHolder, initialBalance = 0) {
+            let balance = initialBalance;
+
+            return {
+                deposit(amount) {
+                    balance += amount;
+                    return balance;
+                },
+                withdraw(amount) {
+                    if (amount > balance) {
+                        return 'Insufficient funds';
+                    }
+                    balance -= amount;
+                    return balance;
+                },
+                getBalance() {
+                    return balance;
+                }
+            };
+        }
+
+        const account = createBankAccount("John Doe", 500);
+
+        document.getElementById('depositButton').addEventListener('click', () => {
+            const newBalance = account.deposit(100);
+            document.getElementById('accountOutput').textContent = `Deposited $100, new balance: $${newBalance}`;
+        });
+
+        document.getElementById('withdrawButton').addEventListener('click', () => {
+            const result = account.withdraw(50);
+            document.getElementById('accountOutput').textContent =
+                typeof result === 'number' ? `Withdrew $50, new balance: $${result}` : result;
+        });
+
+        document.getElementById('showBalance').addEventListener('click', () => {
+            document.getElementById('accountOutput').textContent = `Balance: $${account.getBalance()}`;
+        });
+
+        // Event Emitter Factory
+        function createEventEmitter() {
+            const events = {};
+            return {
+                on(eventName, callback) {
+                    if (!events[eventName]) {
+                        events[eventName] = [];
+                    }
+                    events[eventName].push(callback);
+                },
+                emit(eventName, data) {
+                    if (events[eventName]) {
+                        events[eventName].forEach(cb => cb(data));
+                    }
+                }
+            };
+        }
+
+        const emitter = createEventEmitter();
+        emitter.on('user-login', (user) => {
+            document.getElementById('eventOutput').textContent = `User logged in: ${user.name} (${user.email})`;
+        });
+
+        document.getElementById('emitEvent').addEventListener('click', () => {
+            emitter.emit('user-login', { name: 'Alice', email: 'alice@example.com' });
+        });
+    </script>
+</body>
+
+</html>

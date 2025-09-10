@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure Examples Web App</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Closure Examples Web App</h1>
+
+    <section>
+        <h2>Counter Example</h2>
+        <button id="incrementCounter">Increment</button>
+        <button id="decrementCounter">Decrement</button>
+        <button id="resetCounter">Reset</button>
+        <p>Counter Value: <span id="counterValue">0</span></p>
+    </section>
+
+    <section>
+        <h2>Logger Example</h2>
+        <button id="logInfo">Log Info</button>
+        <button id="logError">Log Error</button>
+    </section>
+
+    <section>
+        <h2>Memoized Function Example</h2>
+        <button id="computeHeavy">Compute Heavy Function (5)</button>
+        <button id="computeHeavyAgain">Compute Again (5)</button>
+    </section>
+
+    <script>
+        // Counter closure
+        function createCounter() {
+            let count = 0;
+            return {
+                increment: () => ++count,
+                decrement: () => --count,
+                reset: () => { count = 0; return count; },
+                getCount: () => count
+            };
+        }
+
+        const counter = createCounter();
+        const counterValueEl = document.getElementById('counterValue');
+
+        document.getElementById('incrementCounter').addEventListener('click', () => {
+            counterValueEl.textContent = counter.increment();
+        });
+
+        document.getElementById('decrementCounter').addEventListener('click', () => {
+            counterValueEl.textContent = counter.decrement();
+        });
+
+        document.getElementById('resetCounter').addEventListener('click', () => {
+            counterValueEl.textContent = counter.reset();
+        });
+
+        // Logger closure
+        function createLogger(prefix) {
+            return function(message) {
+                const timestamp = new Date().toISOString();
+                console.log(`[${timestamp}] ${prefix}: ${message}`);
+            };
+        }
+
+        const infoLogger = createLogger('INFO');
+        const errorLogger = createLogger('ERROR');
+
+        document.getElementById('logInfo').addEventListener('click', () => {
+            infoLogger('This is an info log message.');
+        });
+
+        document.getElementById('logError').addEventListener('click', () => {
+            errorLogger('This is an error log message.');
+        });
+
+        // Memoization closure
+        function memoize(fn) {
+            const cache = {};
+            return function(...args) {
+                const key = JSON.stringify(args);
+                if (key in cache) {
+                    console.log('Cache hit for', args);
+                    return cache[key];
+                }
+                console.log('Computing for', args);
+                const result = fn(...args);
+                cache[key] = result;
+                return result;
+            };
+        }
+
+        const heavyComputation = memoize((n) => {
+            let result = 0;
+            for (let i = 0; i < n * 1000000; i++) {
+                result += i;
+            }
+            return result;
+        });
+
+        document.getElementById('computeHeavy').addEventListener('click', () => {
+            const result = heavyComputation(5);
+            console.log('Heavy computation result:', result);
+        });
+
+        document.getElementById('computeHeavyAgain').addEventListener('click', () => {
+            const result = heavyComputation(5);
+            console.log('Heavy computation result (cached):', result);
+        });
+    </script>
+</body>
+</html>

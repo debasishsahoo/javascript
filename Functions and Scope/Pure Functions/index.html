@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pure Functions Interactive Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input, button {
+            margin: 5px;
+            padding: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #output {
+            margin-top: 20px;
+            background: #f7f7f7;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pure Functions Interactive Demo</h1>
+
+    <div class="form-group">
+        <label for="factorialInput">Factorial of (number):</label>
+        <input type="number" id="factorialInput" placeholder="Enter number" value="5"/>
+        <button onclick="runFactorial()">Run Factorial</button>
+    </div>
+
+    <div class="form-group">
+        <label for="fibonacciInput">Fibonacci of (number):</label>
+        <input type="number" id="fibonacciInput" placeholder="Enter number" value="10"/>
+        <button onclick="runFibonacci()">Run Fibonacci</button>
+    </div>
+
+    <div class="form-group">
+        <label for="isPalindromeInput">Palindrome Check (string):</label>
+        <input type="text" id="isPalindromeInput" placeholder="Enter string" value="racecar"/>
+        <button onclick="runPalindromeCheck()">Check Palindrome</button>
+    </div>
+
+    <div class="form-group">
+        <label for="pureCapitalizeInput">Capitalize String:</label>
+        <input type="text" id="pureCapitalizeInput" placeholder="Enter string" value="hello world"/>
+        <button onclick="runCapitalize()">Capitalize</button>
+    </div>
+
+    <div class="form-group">
+        <label for="powerBase">Power - Base:</label>
+        <input type="number" id="powerBase" placeholder="Base" value="2"/>
+        <label for="powerExp">Exponent:</label>
+        <input type="number" id="powerExp" placeholder="Exponent" value="10"/>
+        <button onclick="runPower()">Run Power</button>
+    </div>
+
+    <div id="output">Results will appear here...</div>
+
+    <script src="pure-functions-app.js"></script>
+</body>
+
+</html>
