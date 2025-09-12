@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Selection Caching Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #myButton { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    .output { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>DOM Selection Caching Example</h1>
+
+  <button id="myButton">Original Button</button>
+
+  <div class="complex">
+    <div class="nested">
+      <p class="selector">I am a nested selector</p>
+    </div>
+  </div>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    // --- Expensive selection example ---
+    const expensiveElement = document.querySelector('.complex .nested .selector');
+    expensiveElement.style.color = "blue";
+    expensiveElement.textContent = "Selected and styled!";
+
+    // --- Bad pattern (querying multiple times) ---
+    // This works but queries the DOM three times unnecessarily
+    // ❌
+    function handleClickBad() {
+      document.querySelector('#myButton').textContent = "Clicked (Bad)";
+      document.querySelector('#myButton').style.backgroundColor = "lightcoral";
+      document.querySelector('#myButton').style.color = "white";
+    }
+
+    // --- Good pattern (cache selection) ---
+    // ✅
+    const myButton = document.querySelector('#myButton');
+
+    function handleClickGood() {
+      myButton.textContent = "Clicked (Good)";
+      myButton.style.backgroundColor = "green";
+      myButton.style.color = "white";
+
+      const output = document.getElementById("output");
+      output.textContent = "Button clicked using cached selection!";
+    }
+
+    // Add event listener using cached selection
+    myButton.addEventListener('click', handleClickGood);
+  </script>
+</body>
+</html>

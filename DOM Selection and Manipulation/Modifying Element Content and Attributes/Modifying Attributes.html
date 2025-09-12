@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Attribute Manipulation</title>
+  <style>
+    .user-card {
+      border: 1px solid #333;
+      padding: 10px;
+      margin-top: 10px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h2>DOM Attribute Manipulation Demo</h2>
+
+  <img id="my-image" src="a.jpg" alt="Original image" title="Image title" width="200">
+  <br>
+  <a id="my-link" href="https://google.com">Go to Google</a>
+
+  <div class="user-card">
+    User Card
+  </div>
+
+  <button id="btnGetAttributes">Get Attributes</button>
+  <button id="btnSetAttributes">Set Attributes</button>
+  <button id="btnRemoveAttribute">Remove Title</button>
+  <button id="btnCheckAttribute">Check alt Attribute</button>
+  <button id="btnDataAttributes">Work with Data Attributes</button>
+
+  <script>
+    const img = document.querySelector('#my-image');
+    const link = document.querySelector('#my-link');
+    const userCard = document.querySelector('.user-card');
+
+    // Get attribute values
+    document.querySelector('#btnGetAttributes').addEventListener('click', () => {
+      const src = img.getAttribute('src');
+      const href = link.getAttribute('href');
+      console.log('Image src:', src);
+      console.log('Link href:', href);
+    });
+
+    // Set attribute values
+    document.querySelector('#btnSetAttributes').addEventListener('click', () => {
+      img.setAttribute('src', 'b.jpg');
+      img.setAttribute('alt', 'New image description');
+      link.setAttribute('href', 'https://example.com');
+      console.log('Attributes updated!');
+    });
+
+    // Remove attribute
+    document.querySelector('#btnRemoveAttribute').addEventListener('click', () => {
+      img.removeAttribute('title');
+      console.log('Title attribute removed!');
+    });
+
+    // Check if attribute exists
+    document.querySelector('#btnCheckAttribute').addEventListener('click', () => {
+      if (img.hasAttribute('alt')) {
+        console.log('Image has alt text');
+      } else {
+        console.log('Image does NOT have alt text');
+      }
+    });
+
+    // Working with data attributes
+    document.querySelector('#btnDataAttributes').addEventListener('click', () => {
+      userCard.setAttribute('data-user-id', '123');
+      userCard.setAttribute('data-user-role', 'admin');
+
+      console.log('Data attributes via getAttribute:');
+      console.log(userCard.getAttribute('data-user-id'));    // "123"
+      console.log(userCard.getAttribute('data-user-role'));  // "admin"
+
+      console.log('Data attributes via dataset:');
+      console.log(userCard.dataset.userId);   // "123"
+      console.log(userCard.dataset.userRole); // "admin"
+
+      // Adding another data attribute via dataset
+      userCard.dataset.theme = 'dark'; // data-theme="dark"
+      console.log('Theme set via dataset:', userCard.dataset.theme);
+    });
+  </script>
+</body>
+</html>

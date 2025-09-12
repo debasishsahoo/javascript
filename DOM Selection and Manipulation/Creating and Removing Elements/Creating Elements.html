@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create DOM Elements</title>
+  <style>
+    .container {
+      border: 2px solid #333;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .btn {
+      padding: 5px 10px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+    .primary {
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Create DOM Elements Demo</h2>
+  <div id="main"></div>
+  
+  <button id="btnCreateElements">Create Elements</button>
+  <button id="btnCreateUtility">Create With Utility</button>
+
+  <script>
+    const main = document.querySelector('#main');
+
+    // Create new elements manually
+    document.querySelector('#btnCreateElements').addEventListener('click', () => {
+      const div = document.createElement('div');
+      div.className = 'container';
+      div.id = 'new-container';
+
+      const p = document.createElement('p');
+      p.textContent = 'This is a new paragraph';
+
+      const button = document.createElement('button');
+      button.textContent = 'Click me';
+      button.setAttribute('type', 'button');
+      button.className = 'btn primary';
+
+      // Append elements
+      div.appendChild(p);
+      div.appendChild(button);
+      main.appendChild(div);
+    });
+
+    // Utility function to create elements with optional class and text
+    function createElement(tag, className, textContent) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      if (textContent) element.textContent = textContent;
+      return element;
+    }
+
+    // Create elements using utility function
+    document.querySelector('#btnCreateUtility').addEventListener('click', () => {
+      const div = createElement('div', 'container', null);
+      div.id = 'utility-container';
+
+      const p = createElement('p', null, 'Paragraph created via utility function');
+      const button = createElement('button', 'btn primary', 'Submit');
+
+      div.appendChild(p);
+      div.appendChild(button);
+      main.appendChild(div);
+    });
+  </script>
+</body>
+</html>

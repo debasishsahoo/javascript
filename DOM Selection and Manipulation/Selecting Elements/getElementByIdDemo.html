@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>getElementById Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #main-header {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    #sidebar {
+      background: #f0f0f0;
+      padding: 10px;
+      width: 200px;
+      float: left;
+      margin-right: 20px;
+    }
+    #content {
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="main-header">Welcome to My Page</h1>
+
+  <div id="sidebar">
+    <h3>Sidebar</h3>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <p>This is the main content area. The sidebar and header are selected using <code>getElementById</code>.</p>
+  </div>
+
+  <script>
+    // Select element by ID (returns single element or null)
+    const header = document.getElementById('main-header');
+    const sidebar = document.getElementById('sidebar');
+
+    // Common pattern: check if element exists
+    if (header) {
+      header.style.color = 'blue';
+      header.textContent = 'Updated Header using JS!';
+    }
+
+    if (sidebar) {
+      sidebar.style.border = "2px solid black";
+      sidebar.style.backgroundColor = "#e0f7fa";
+    }
+
+    // Example: Trying to select an element that doesn't exist
+    const footer = document.getElementById('footer');
+    if (!footer) {
+      console.log("Footer element not found!");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove DOM Elements Demo</title>
+  <style>
+    .container, .remove-me, .temp-element {
+      border: 1px solid #333;
+      padding: 10px;
+      margin: 5px 0;
+    }
+    .remove-me {
+      background-color: #f9c2c2;
+    }
+    .temp-element {
+      background-color: #c2f9c2;
+    }
+  </style>
+</head>
+<body>
+  <h2>Remove DOM Elements Demo</h2>
+
+  <div class="container">
+    <div class="remove-me">Element to Remove</div>
+    <div class="temp-element">Temp Element 1</div>
+    <div class="temp-element">Temp Element 2</div>
+    <div class="temp-element">Temp Element 3</div>
+    <p>Other content</p>
+  </div>
+
+  <button id="btnModernRemove">Remove Single Element (Modern)</button>
+  <button id="btnLegacyRemove">Remove Single Element (Legacy)</button>
+  <button id="btnClearChildren">Remove All Children</button>
+  <button id="btnRemoveMultiple">Remove Multiple Elements</button>
+
+  <script>
+    const container = document.querySelector('.container');
+
+    // Modern way to remove a single element
+    document.querySelector('#btnModernRemove').addEventListener('click', () => {
+      const elementToRemove = document.querySelector('.remove-me');
+      if (elementToRemove) {
+        elementToRemove.remove();
+        console.log('Element removed (modern)');
+      }
+    });
+
+    // Legacy way to remove a single element
+    document.querySelector('#btnLegacyRemove').addEventListener('click', () => {
+      const elementToRemove = document.querySelector('.remove-me');
+      if (elementToRemove) {
+        elementToRemove.parentNode.removeChild(elementToRemove);
+        console.log('Element removed (legacy)');
+      }
+    });
+
+    // Remove all children
+    document.querySelector('#btnClearChildren').addEventListener('click', () => {
+      // Option 1: Using while loop
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+
+      // Option 2 (alternative): container.innerHTML = '';
+      console.log('All children removed from container');
+    });
+
+    // Remove multiple elements
+    document.querySelector('#btnRemoveMultiple').addEventListener('click', () => {
+      document.querySelectorAll('.temp-element').forEach(el => el.remove());
+      console.log('All temp elements removed');
+    });
+  </script>
+</body>
+</html>

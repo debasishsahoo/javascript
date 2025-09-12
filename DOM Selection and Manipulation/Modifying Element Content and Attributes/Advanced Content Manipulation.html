@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>insertAdjacentHTML & insertAdjacentText Demo</title>
+  <style>
+    .container {
+      border: 1px solid #333;
+      padding: 10px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>insertAdjacentHTML & insertAdjacentText Demo</h2>
+
+  <div class="container">
+    This is the main container.
+  </div>
+
+  <button id="btnInsertHTML">Insert HTML</button>
+  <button id="btnInsertText">Insert Safe Text</button>
+
+  <script>
+    const element = document.querySelector('.container');
+
+    // Insert HTML at different positions
+    document.querySelector('#btnInsertHTML').addEventListener('click', () => {
+      element.insertAdjacentHTML('beforebegin', '<p>Before the element</p>');
+      element.insertAdjacentHTML('afterbegin', '<p>First child</p>');
+      element.insertAdjacentHTML('beforeend', '<p>Last child</p>');
+      element.insertAdjacentHTML('afterend', '<p>After the element</p>');
+    });
+
+    // Insert safe text
+    document.querySelector('#btnInsertText').addEventListener('click', () => {
+      element.insertAdjacentText('beforeend', ' | Safe text content');
+    });
+  </script>
+</body>
+</html>

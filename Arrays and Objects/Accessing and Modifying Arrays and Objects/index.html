@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arrays & Objects Interactive Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-2xl font-bold mb-6 text-center">Arrays & Objects Interactive Demo</h1>
+
+  <!-- Buttons -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+    <!-- Array Access -->
+    <button onclick="arrayAccess()" class="btn">Access Array Elements</button>
+    <button onclick="arrayModify()" class="btn">Modify Arrays</button>
+    <!-- Object Access -->
+    <button onclick="objectAccess()" class="btn">Access Object Properties</button>
+    <button onclick="objectModify()" class="btn">Modify Object Properties</button>
+    <button onclick="deleteProperties()" class="btn">Delete Properties</button>
+    <!-- Destructuring -->
+    <button onclick="arrayDestructuring()" class="btn">Array Destructuring</button>
+    <button onclick="objectDestructuring()" class="btn">Object Destructuring</button>
+    <!-- Property Existence -->
+    <button onclick="checkProperties()" class="btn">Check Property Existence</button>
+    <!-- Copying -->
+    <button onclick="copyShallow()" class="btn">Shallow Copy</button>
+    <button onclick="copyDeep()" class="btn">Deep Copy</button>
+  </div>
+
+  <!-- Output -->
+  <div id="output" class="bg-white p-4 rounded-xl shadow-md h-96 overflow-auto text-sm"></div>
+
+  <script>
+    const output = document.getElementById("output");
+    const log = (title, value) => {
+      output.innerHTML = `<h2 class="font-semibold mb-2">${title}</h2>
+        <pre class="bg-gray-900 text-green-300 p-3 rounded-lg overflow-x-auto">${JSON.stringify(value, null, 2)}</pre>`;
+    };
+
+    // ===== FUNCTIONS =====
+    function arrayAccess() {
+      let fruits = ['apple', 'banana', 'cherry', 'date'];
+      let result = {
+        first: fruits[0],
+        last: fruits[fruits.length - 1],
+        lastAt: fruits.at(-1),
+        secondLast: fruits.at(-2),
+        index10: fruits[10]
+      };
+      log("Array Accessing", result);
+    }
+
+    function arrayModify() {
+      let fruits = ['apple', 'banana', 'cherry', 'date'];
+      fruits[1] = 'blueberry';
+      fruits[6] = 'elderberry';
+      fruits[4] = 'fig';
+      fruits[5] = 'grape';
+      log("Modified Arrays", fruits);
+    }
+
+    function objectAccess() {
+      let person = {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30,
+        'favorite-color': 'blue',
+        hobbies: ['reading', 'gaming'],
+        address: { street: '123 Main St', city: 'New York', country: 'USA' }
+      };
+      let prop = 'lastName';
+      let result = {
+        firstName: person.firstName,
+        age: person.age,
+        favoriteColor: person['favorite-color'],
+        lastName: person[prop],
+        city: person.address.city,
+        street: person['address']['street']
+      };
+      log("Accessing Object Properties", result);
+    }
+
+    function objectModify() {
+      let person = {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30,
+        'favorite-color': 'blue',
+        address: { street: '123 Main St', city: 'New York', country: 'USA' }
+      };
+      person.email = 'john@example.com';
+      person['phone'] = '123-456-7890';
+      person.age = 31;
+      person['favorite-color'] = 'green';
+      person.address.zipCode = '10001';
+      log("Modified Object", person);
+    }
+
+    function deleteProperties() {
+      let person = { name: "John", phone: "123-456" };
+      delete person.phone;
+
+      let numbers = [1, 2, 3, 4, 5];
+      delete numbers[2]; // hole
+      let spliced = [...numbers];
+      spliced.splice(3, 1);
+
+      log("Deleting Properties", { person, numbers, afterSplice: spliced });
+    }
+
+    function arrayDestructuring() {
+      let colors = ['red', 'green', 'blue'];
+      let [primary, secondary, tertiary] = colors;
+      let [first, , third] = colors;
+      let [head, ...tail] = colors;
+      log("Array Destructuring", { primary, secondary, tertiary, first, third, head, tail });
+    }
+
+    function objectDestructuring() {
+      let person = { firstName: 'John', age: 31, address: { city: 'New York', country: 'USA' } };
+      let { firstName, age, address } = person;
+      let { firstName: name, age: years } = person;
+      let { address: { city, country } } = person;
+      let { height = 180, weight = 70 } = person;
+      log("Object Destructuring", { firstName, age, address, name, years, city, country, height, weight });
+    }
+
+    function checkProperties() {
+      let person = { firstName: 'John', age: 31 };
+      let result = {
+        hasFirstName: 'firstName' in person,
+        hasHeight: 'height' in person,
+        hasOwnAge: person.hasOwnProperty('age'),
+        hasOwnAgeModern: Object.hasOwn(person, 'age'),
+        checkUndefined: person.height !== undefined
+      };
+      log("Check Property Existence", result);
+    }
+
+    function copyShallow() {
+      let originalArray = [1, 2, [3, 4]];
+      let shallowCopyArray = [...originalArray];
+      shallowCopyArray[2][0] = 99;
+
+      let originalObject = { name: 'Alice', scores: [90, 85, 88] };
+      let shallowCopyObject = { ...originalObject };
+      shallowCopyObject.scores[0] = 100;
+
+      log("Shallow Copy", { originalArray, shallowCopyArray, originalObject, shallowCopyObject });
+    }
+
+    function copyDeep() {
+      let originalData = { name: 'Bob', scores: [95, 87, 92], details: { age: 25, city: 'Boston' } };
+      let deepCopy = JSON.parse(JSON.stringify(originalData));
+      deepCopy.scores[0] = 100;
+      deepCopy.details.age = 26;
+
+      log("Deep Copy", { originalData, deepCopy });
+    }
+  </script>
+
+  <style>
+    .btn {
+      background: #2563eb;
+      color: white;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #1d4ed8; }
+  </style>
+</body>
+</html>

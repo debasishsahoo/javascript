@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Relationships & Traversal</title>
+  <style>
+    .container {
+      border: 2px solid #333;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    .box {
+      border: 1px dashed #666;
+      padding: 10px;
+      margin: 5px;
+    }
+    .highlight {
+      background-color: #d0f0c0;
+    }
+  </style>
+</head>
+<body>
+  <h2>DOM Relationships & Traversal Demo</h2>
+
+  <div class="container">
+    <div class="box parent">
+      Parent Div
+      <div class="box child child-1">Child 1</div>
+      <div class="box child child-2">Child 2</div>
+      <div class="box child child-3">Child 3</div>
+      <button>Click Me</button>
+    </div>
+  </div>
+
+  <button id="btnParent">Get Parent</button>
+  <button id="btnChildren">Get Children</button>
+  <button id="btnSiblings">Get Siblings</button>
+  <button id="btnDescendants">Get Descendants</button>
+  <button id="btnWalk">Walk DOM</button>
+
+  <script>
+    const container = document.querySelector('.container');
+    const targetElement = document.querySelector('.child-2');
+
+    // --- Utility Functions ---
+
+    // Get siblings
+    function getSiblings(element) {
+      const siblings = [];
+      let sibling = element.parentNode.firstElementChild;
+      while (sibling) {
+        if (sibling !== element) siblings.push(sibling);
+        sibling = sibling.nextElementSibling;
+      }
+      return siblings;
+    }
+
+    // Find by relation
+    function findElementsByRelation(element, relation) {
+      switch (relation) {
+        case 'parent':
+          return element.parentElement;
+        case 'children':
+          return Array.from(element.children);
+        case 'siblings':
+          return getSiblings(element);
+        case 'descendants':
+          return Array.from(element.querySelectorAll('*'));
+        default:
+          return null;
+      }
+    }
+
+    // Relationship checks
+    function isDescendantOf(child, ancestor) {
+      return ancestor.contains(child);
+    }
+
+    function isDirectChild(child, parent) {
+      return child.parentElement === parent;
+    }
+
+    // Walk DOM tree
+    function walkDOM(element, callback) {
+      callback(element);
+      let child = element.firstElementChild;
+      while (child) {
+        walkDOM(child, callback);
+        child = child.nextElementSibling;
+      }
+    }
+
+    // --- Demo Buttons ---
+    document.querySelector('#btnParent').addEventListener('click', () => {
+      console.log('Parent:', findElementsByRelation(targetElement, 'parent'));
+    });
+
+    document.querySelector('#btnChildren').addEventListener('click', () => {
+      console.log('Children of container:', findElementsByRelation(container, 'children'));
+    });
+
+    document.querySelector('#btnSiblings').addEventListener('click', () => {
+      console.log('Siblings of .child-2:', findElementsByRelation(targetElement, 'siblings'));
+    });
+
+    document.querySelector('#btnDescendants').addEventListener('click', () => {
+      console.log('All descendants of container:', findElementsByRelation(container, 'descendants'));
+    });
+
+    document.querySelector('#btnWalk').addEventListener('click', () => {
+      console.log('Walking the DOM tree...');
+      walkDOM(document.body, (el) => {
+        console.log(el.tagName, el.className);
+      });
+    });
+
+    // --- Relationship Checks ---
+    console.log('Is .child-2 a descendant of container?', isDescendantOf(targetElement, container));
+    console.log('Is .child-2 a direct child of container?', isDirectChild(targetElement, container));
+  </script>
+</body>
+</html>

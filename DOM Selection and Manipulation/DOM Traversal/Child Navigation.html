@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Children Traversal</title>
+  <style>
+    .container {
+      border: 2px solid #333;
+      padding: 10px;
+      margin: 15px 0;
+    }
+    .container div {
+      border: 1px dashed #666;
+      margin: 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>DOM Children Traversal Demo</h2>
+
+  <div class="container">
+    Text node before
+    <div class="child">Child 1</div>
+    <div class="child">Child 2</div>
+    <div class="child">Child 3</div>
+    Text node after
+  </div>
+
+  <button id="btnAllNodes">Show All Child Nodes</button>
+  <button id="btnElementChildren">Show Element Children</button>
+  <button id="btnFirstLast">Show First & Last Child</button>
+  <button id="btnCount">Check & Count Children</button>
+
+  <script>
+    const container = document.querySelector('.container');
+
+    // All child nodes (including text, comments, etc.)
+    document.querySelector('#btnAllNodes').addEventListener('click', () => {
+      const allChildren = container.childNodes;
+      console.log('All childNodes:', allChildren);
+    });
+
+    // Only element children
+    document.querySelector('#btnElementChildren').addEventListener('click', () => {
+      const elementChildren = container.children;
+      console.log('Element children:', elementChildren);
+    });
+
+    // First and last element child
+    document.querySelector('#btnFirstLast').addEventListener('click', () => {
+      const firstChild = container.firstElementChild;
+      const lastChild = container.lastElementChild;
+      console.log('First element child:', firstChild);
+      console.log('Last element child:', lastChild);
+    });
+
+    // Check if element has children & count
+    document.querySelector('#btnCount').addEventListener('click', () => {
+      if (container.hasChildNodes()) {
+        console.log('Container has children');
+      }
+      console.log(`Container has ${container.children.length} child elements`);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      padding: 20px;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    .todo-container {
+      border: 2px solid #333;
+      padding: 15px;
+      border-radius: 5px;
+      background: #fff;
+      max-width: 400px;
+    }
+    .todo-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    .todo-item.completed .todo-text {
+      text-decoration: line-through;
+      color: #888;
+    }
+    .todo-item button {
+      margin-left: 5px;
+      padding: 5px 8px;
+      cursor: pointer;
+    }
+    .controls {
+      margin-bottom: 15px;
+    }
+    .controls input {
+      padding: 6px;
+      width: 65%;
+      margin-right: 5px;
+    }
+    .controls button {
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Todo List App</h2>
+  <div class="controls">
+    <input type="text" id="todo-input" placeholder="Enter a new todo">
+    <button id="add-btn">Add</button>
+  </div>
+  <div id="todo-container" class="todo-container"></div>
+
+  <script>
+    class TodoList {
+      constructor(containerId) {
+        this.container = document.getElementById(containerId);
+        this.todos = [];
+        this.render();
+      }
+
+      addTodo(text) {
+        if (!text.trim()) return; // Prevent empty todos
+        const todo = {
+          id: Date.now(),
+          text: text,
+          completed: false
+        };
+        this.todos.push(todo);
+        this.render();
+      }
+
+      removeTodo(id) {
+        this.todos = this.todos.filter(todo => todo.id !== parseInt(id));
+        this.render();
+      }
+
+      toggleTodo(id) {
+        const todo = this.todos.find(todo => todo.id === parseInt(id));
+        if (todo) {
+          todo.completed = !todo.completed;
+          this.render();
+        }
+      }
+
+      render() {
+        this.container.innerHTML = '';
+
+        this.todos.forEach(todo => {
+          const todoElement = document.createElement('div');
+          todoElement.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+          todoElement.dataset.id = todo.id;
+
+          todoElement.innerHTML = `
+            <span class="todo-text">${todo.text}</span>
+            <div>
+              <button class="toggle-btn">${todo.completed ? 'Undo' : 'Done'}</button>
+              <button class="delete-btn">Delete</button>
+            </div>
+          `;
+
+          // Event listeners
+          todoElement.querySelector('.toggle-btn').addEventListener('click', () => {
+            this.toggleTodo(todo.id);
+          });
+
+          todoElement.querySelector('.delete-btn').addEventListener('click', () => {
+            this.removeTodo(todo.id);
+          });
+
+          this.container.appendChild(todoElement);
+        });
+      }
+    }
+
+    // Usage
+    const todoList = new TodoList('todo-container');
+
+    // Hook up input + button
+    document.getElementById('add-btn').addEventListener('click', () => {
+      const input = document.getElementById('todo-input');
+      todoList.addTodo(input.value);
+      input.value = '';
+    });
+
+    // Add todo on "Enter" key
+    document.getElementById('todo-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        document.getElementById('add-btn').click();
+      }
+    });
+
+    // Preloaded todos
+    todoList.addTodo('Learn DOM manipulation');
+    todoList.addTodo('Build a web app');
+  </script>
+</body>
+</html>

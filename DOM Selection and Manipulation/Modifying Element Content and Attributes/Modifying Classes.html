@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>classList Manipulation Demo</title>
+  <style>
+    .my-element {
+      padding: 20px;
+      border: 2px solid #333;
+      margin: 10px 0;
+    }
+    .active {
+      background-color: lightgreen;
+    }
+    .inactive {
+      background-color: lightcoral;
+    }
+    .visible {
+      display: block;
+    }
+    .hidden {
+      display: none;
+    }
+    .class1 { font-weight: bold; }
+    .class2 { color: blue; }
+    .class3 { font-style: italic; }
+  </style>
+</head>
+<body>
+  <h2>classList Manipulation Demo</h2>
+
+  <div class="my-element inactive hidden old-class">Hello World</div>
+
+  <button id="btnAddClass">Add Class</button>
+  <button id="btnRemoveClass">Remove Class</button>
+  <button id="btnToggleClass">Toggle Class</button>
+  <button id="btnCheckClass">Check Class</button>
+  <button id="btnAddMultiple">Add Multiple Classes</button>
+  <button id="btnReplaceClass">Replace Class</button>
+  <button id="btnClassName">Direct className Change</button>
+
+  <script>
+    const element = document.querySelector('.my-element');
+
+    // Add class
+    document.querySelector('#btnAddClass').addEventListener('click', () => {
+      element.classList.add('active');
+      console.log('Added class "active":', element.className);
+    });
+
+    // Remove class
+    document.querySelector('#btnRemoveClass').addEventListener('click', () => {
+      element.classList.remove('inactive');
+      console.log('Removed class "inactive":', element.className);
+    });
+
+    // Toggle class
+    document.querySelector('#btnToggleClass').addEventListener('click', () => {
+      element.classList.toggle('visible');
+      console.log('Toggled class "visible":', element.className);
+    });
+
+    // Check if class exists
+    document.querySelector('#btnCheckClass').addEventListener('click', () => {
+      if (element.classList.contains('active')) {
+        console.log('Element has class "active"');
+      } else {
+        console.log('Element does NOT have class "active"');
+      }
+    });
+
+    // Add multiple classes
+    document.querySelector('#btnAddMultiple').addEventListener('click', () => {
+      element.classList.add('class1', 'class2', 'class3');
+      console.log('Added multiple classes:', element.className);
+    });
+
+    // Replace class
+    document.querySelector('#btnReplaceClass').addEventListener('click', () => {
+      element.classList.replace('old-class', 'new-class');
+      console.log('Replaced "old-class" with "new-class":', element.className);
+    });
+
+    // Direct className manipulation
+    document.querySelector('#btnClassName').addEventListener('click', () => {
+      element.className = 'new-class another-class';
+      console.log('Directly set className:', element.className);
+
+      element.className += ' additional-class';
+      console.log('Appended additional class:', element.className);
+    });
+  </script>
+</body>
+</html>

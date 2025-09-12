@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clone DOM Elements Demo</title>
+  <style>
+    .container {
+      border: 1px solid #333;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .template, .user-card {
+      border: 1px solid #666;
+      padding: 10px;
+      margin: 5px 0;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Clone DOM Elements Demo</h2>
+
+  <div class="container">
+    <div class="template">
+      <p>Original Template</p>
+      <span>Child Element</span>
+    </div>
+  </div>
+
+  <button id="btnShallowClone">Shallow Clone</button>
+  <button id="btnDeepClone">Deep Clone</button>
+
+  <h3>User Cards</h3>
+  <div class="cards-container"></div>
+
+  <!-- Template for user cards -->
+  <div id="user-card-template" class="user-card" style="display:none;">
+    <img class="avatar" src="" alt="Avatar">
+    <div>
+      <p class="name"></p>
+      <p class="email"></p>
+    </div>
+  </div>
+
+  <script>
+    const originalElement = document.querySelector('.template');
+    const container = document.querySelector('.container');
+
+    // Shallow clone
+    document.querySelector('#btnShallowClone').addEventListener('click', () => {
+      const shallowClone = originalElement.cloneNode(false);
+      shallowClone.style.backgroundColor = '#f9c2ff';
+      container.appendChild(shallowClone);
+      console.log('Shallow clone added:', shallowClone);
+    });
+
+    // Deep clone
+    document.querySelector('#btnDeepClone').addEventListener('click', () => {
+      const deepClone = originalElement.cloneNode(true);
+      deepClone.style.backgroundColor = '#c2f9ff';
+      container.appendChild(deepClone);
+      console.log('Deep clone added:', deepClone);
+    });
+
+    // Practical example: Creating user cards
+    const users = [
+      {id: 1, name: 'Alice', email: 'alice@example.com', avatar: 'https://i.pravatar.cc/50?img=1'},
+      {id: 2, name: 'Bob', email: 'bob@example.com', avatar: 'https://i.pravatar.cc/50?img=2'}
+    ];
+
+    const cardsContainer = document.querySelector('.cards-container');
+
+    function createUserCard(user) {
+      const template = document.querySelector('#user-card-template');
+      const card = template.cloneNode(true);
+      card.style.display = 'flex'; // Make it visible
+      card.id = `user-${user.id}`;
+      card.querySelector('.name').textContent = user.name;
+      card.querySelector('.email').textContent = user.email;
+      card.querySelector('.avatar').src = user.avatar;
+      return card;
+    }
+
+    // Render user cards
+    users.forEach(user => {
+      const card = createUserCard(user);
+      cardsContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>

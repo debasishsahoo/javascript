@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textContent vs innerHTML vs innerText</title>
+    <style>
+        #hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Example: textContent vs innerHTML vs innerText</h2>
+
+    <div id="content">Original Content</div>
+    <button onclick="useTextContent()">Set textContent</button>
+    <button onclick="useInnerHTML()">Set innerHTML</button>
+    <button onclick="useInnerText()">Set innerText</button>
+
+    <hr>
+
+    <h3>Safe Display of User Input</h3>
+    <input type="text" id="userInput" placeholder="Enter something (e.g. &lt;script&gt;alert('XSS')&lt;/script&gt;)">
+    <button onclick="safeDisplay()">Display Safely</button>
+    <div id="output" style="margin-top: 10px; padding: 10px; border: 1px solid #333;"></div>
+
+    <hr>
+
+    <h3>Hidden Text Example (innerText vs textContent)</h3>
+    <div id="hidden">This text is hidden</div>
+    <button onclick="showHiddenContent()">Show Hidden Content</button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

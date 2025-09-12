@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validator Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f9;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      max-width: 400px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    input.error, textarea.error, select.error {
+      border-color: #e74c3c;
+      background: #fdecea;
+    }
+
+    input.valid, textarea.valid, select.valid {
+      border-color: #2ecc71;
+      background: #ecfdf5;
+    }
+
+    .error-message {
+      color: #e74c3c;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+
+    .success-message {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #2ecc71;
+      color: white;
+      border-radius: 4px;
+      font-weight: bold;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h2>Contact Form</h2>
+  <form id="contact-form">
+    <div class="form-group">
+      <label for="name">Name*</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email*</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password*</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message"></textarea>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    class FormValidator {
+      constructor(formSelector) {
+        this.form = document.querySelector(formSelector);
+        this.fields = this.form.querySelectorAll('input, select, textarea');
+        this.setupValidation();
+      }
+
+      setupValidation() {
+        this.fields.forEach(field => {
+          field.addEventListener('blur', () => this.validateField(field));
+          field.addEventListener('input', () => this.clearErrors(field));
+        });
+
+        this.form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (this.validateForm()) {
+            this.handleSubmit();
+          }
+        });
+      }
+
+      validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+        let errorMessage = '';
+
+        // Required validation
+        if (field.hasAttribute('required') && !value) {
+          isValid = false;
+          errorMessage = 'This field is required';
+        }
+
+        // Email validation
+        if (field.type === 'email' && value && !this.isValidEmail(value)) {
+          isValid = false;
+          errorMessage = 'Please enter a valid email';
+        }
+
+        // Password validation
+        if (field.type === 'password' && value && value.length < 8) {
+          isValid = false;
+          errorMessage = 'Password must be at least 8 characters';
+        }
+
+        this.showFieldError(field, isValid, errorMessage);
+        return isValid;
+      }
+
+      showFieldError(field, isValid, errorMessage) {
+        const existingError = field.parentElement.querySelector('.error-message');
+        if (existingError) existingError.remove();
+
+        field.classList.toggle('error', !isValid);
+        field.classList.toggle('valid', isValid);
+
+        if (!isValid) {
+          const errorElement = document.createElement('div');
+          errorElement.className = 'error-message';
+          errorElement.textContent = errorMessage;
+          field.parentElement.appendChild(errorElement);
+        }
+      }
+
+      clearErrors(field) {
+        field.classList.remove('error', 'valid');
+        const errorMessage = field.parentElement.querySelector('.error-message');
+        if (errorMessage) errorMessage.remove();
+      }
+
+      validateForm() {
+        let isFormValid = true;
+        this.fields.forEach(field => {
+          if (!this.validateField(field)) {
+            isFormValid = false;
+          }
+        });
+        return isFormValid;
+      }
+
+      isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      handleSubmit() {
+        const formData = new FormData(this.form);
+        const data = Object.fromEntries(formData);
+        console.log('Form submitted:', data);
+
+        const successMessage = document.createElement('div');
+        successMessage.className = 'success-message';
+        successMessage.textContent = 'Form submitted successfully!';
+        this.form.insertAdjacentElement('beforebegin', successMessage);
+
+        setTimeout(() => successMessage.remove(), 3000);
+        this.form.reset();
+      }
+    }
+
+    // Usage
+    const validator = new FormValidator('#contact-form');
+  </script>
+</body>
+</html>

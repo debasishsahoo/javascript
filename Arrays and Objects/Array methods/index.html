@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Methods Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .title {
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 6px;
+    }
+    .output {
+      background: #f1f3f5;
+      border-radius: 6px;
+      padding: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Interactive Array Methods Demo</h1>
+
+  <div class="btn-grid">
+    <button onclick="runMethod('push')">push()</button>
+    <button onclick="runMethod('pop')">pop()</button>
+    <button onclick="runMethod('unshift')">unshift()</button>
+    <button onclick="runMethod('shift')">shift()</button>
+    <button onclick="runMethod('indexOf')">indexOf()</button>
+    <button onclick="runMethod('includes')">includes()</button>
+    <button onclick="runMethod('find')">find()</button>
+    <button onclick="runMethod('findIndex')">findIndex()</button>
+    <button onclick="runMethod('map')">map()</button>
+    <button onclick="runMethod('filter')">filter()</button>
+    <button onclick="runMethod('reduce')">reduce()</button>
+    <button onclick="runMethod('slice')">slice()</button>
+    <button onclick="runMethod('splice')">splice()</button>
+    <button onclick="runMethod('sort')">sort()</button>
+    <button onclick="runMethod('reverse')">reverse()</button>
+    <button onclick="runMethod('forEach')">forEach()</button>
+    <button onclick="runMethod('every')">every()</button>
+    <button onclick="runMethod('some')">some()</button>
+    <button onclick="runMethod('join')">join()</button>
+    <button onclick="clearOutput()">Clear Output</button>
+  </div>
+
+  <div id="output-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

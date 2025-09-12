@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>querySelector Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .btn { padding: 6px 12px; margin: 4px; border: 1px solid #333; cursor: pointer; }
+    .btn.active { background-color: #4CAF50; color: white; }
+    nav a { margin-right: 10px; text-decoration: none; color: blue; }
+    ul { padding: 0; list-style: none; }
+    li { padding: 5px; }
+    .highlight { background: yellow; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1 id="main-header">Main Header</h1>
+
+  <p>This is the first paragraph.</p>
+  <p>This is another paragraph.</p>
+
+  <button class="btn">Button 1</button>
+  <button class="btn active">Button 2 (Active)</button>
+  <button class="btn">Button 3</button>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <form>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <input type="password" placeholder="Password">
+  </form>
+
+  <ul>
+    <li class="list-item">Item 1</li>
+    <li class="list-item">Item 2</li>
+    <li class="list-item">Item 3</li>
+  </ul>
+
+  <script>
+    // Select by ID (same as getElementById)
+    const header = document.querySelector('#main-header');
+    header.classList.add("highlight");
+
+    // Select by class (returns first element with this class)
+    const firstButton = document.querySelector('.btn');
+    firstButton.textContent = "First Button (Modified)";
+
+    // Select by element type
+    const firstParagraph = document.querySelector('p');
+    firstParagraph.style.color = "blue";
+
+    // Complex selectors
+    const firstNavLink = document.querySelector('nav a');
+    firstNavLink.style.fontWeight = "bold";
+
+    const firstActiveButton = document.querySelector('.btn.active');
+    firstActiveButton.style.backgroundColor = "orange";
+
+    const specificInput = document.querySelector('input[type="email"]');
+    specificInput.style.border = "2px solid red";
+
+    // Pseudo-selectors
+    const firstChild = document.querySelector('ul li:first-child');
+    firstChild.style.textDecoration = "underline";
+
+    const lastItem = document.querySelector('.list-item:last-of-type');
+    lastItem.style.fontStyle = "italic";
+
+    // Logging for clarity
+    console.log("Header:", header);
+    console.log("First Button:", firstButton);
+    console.log("First Paragraph:", firstParagraph);
+    console.log("First Nav Link:", firstNavLink);
+    console.log("Active Button:", firstActiveButton);
+    console.log("Specific Input:", specificInput);
+    console.log("First Child LI:", firstChild);
+    console.log("Last Item LI:", lastItem);
+  </script>
+</body>
+</html>

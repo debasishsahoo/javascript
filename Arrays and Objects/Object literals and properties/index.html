@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Object Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <h1 class="text-2xl font-bold mb-6 text-center">JavaScript Objects Interactive Demo</h1>
+
+  <!-- Buttons -->
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+    <button onclick="createPerson()" class="btn">Create Person Object</button>
+    <button onclick="createCar()" class="btn">Create Car Object</button>
+    <button onclick="createDog()" class="btn">Object.create Example</button>
+    <button onclick="showComplexObject()" class="btn">Complex Object</button>
+    <button onclick="showSpecialNames()" class="btn">Special Property Names</button>
+    <button onclick="showDynamicProperties()" class="btn">Dynamic Properties</button>
+    <button onclick="showPropertyDescriptors()" class="btn">Property Descriptors</button>
+    <button onclick="showGetterSetter()" class="btn">Getters & Setters</button>
+  </div>
+
+  <!-- Output -->
+  <div id="output" class="bg-white p-4 rounded-xl shadow-md h-96 overflow-auto text-sm"></div>
+
+  <script>
+    const output = document.getElementById("output");
+    const log = (title, value) => {
+      output.innerHTML = `<h2 class="font-semibold mb-2">${title}</h2>
+        <pre class="bg-gray-900 text-green-300 p-3 rounded-lg overflow-x-auto">${JSON.stringify(value, null, 2)}</pre>`;
+    };
+
+    // ==== DEMO FUNCTIONS ====
+
+    function createPerson() {
+      let person = {
+        name: 'John Doe',
+        age: 30,
+        city: 'New York',
+        isEmployed: true,
+        hobbies: ['reading', 'swimming', 'coding']
+      };
+      log("Person Object", person);
+    }
+
+    function createCar() {
+      let car = new Object();
+      car.brand = 'Toyota';
+      car.model = 'Camry';
+      car.year = 2022;
+      log("Car Object", car);
+    }
+
+    function createDog() {
+      let animal = { type: 'mammal', breathe: () => 'breathing...' };
+      let dog = Object.create(animal);
+      dog.breed = 'Golden Retriever';
+      dog.name = 'Buddy';
+      log("Dog Object (from prototype)", dog);
+    }
+
+    function showComplexObject() {
+      let complexObject = {
+        name: 'Alice',
+        age: 25,
+        skills: ['JavaScript', 'Python', 'React'],
+        address: { street: '123 Main St', city: 'Boston', zipCode: '02101' },
+        greet: function() { return `Hello, I'm ${this.name}`; },
+        introduce() { return `I'm ${this.age} years old and live in ${this.address.city}`; },
+        getSkillCount: () => 'Skills counted'
+      };
+      log("Complex Object", {
+        object: complexObject,
+        greet: complexObject.greet(),
+        introduce: complexObject.introduce(),
+        arrowFn: complexObject.getSkillCount()
+      });
+    }
+
+    function showSpecialNames() {
+      let specialObject = {
+        'first-name': 'John',
+        'last name': 'Smith',
+        '2024-goal': 'Learn JavaScript',
+        42: 'answer to everything'
+      };
+      log("Special Property Names", specialObject);
+    }
+
+    function showDynamicProperties() {
+      let dynamicKey = 'favoriteColor';
+      let preferences = {
+        [dynamicKey]: 'blue',
+        ['favorite' + 'Food']: 'pizza'
+      };
+      log("Dynamic Properties", preferences);
+    }
+
+    function showPropertyDescriptors() {
+      let student = {};
+      Object.defineProperty(student, 'name', {
+        value: 'Jane', writable: true, enumerable: true, configurable: true
+      });
+      Object.defineProperty(student, 'id', {
+        value: 12345, writable: false, enumerable: false, configurable: false
+      });
+      student.grade = 'A';
+      log("Student with Property Descriptors", {
+        student,
+        idAfterChange: (student.id = 99999, student.id) // will remain 12345
+      });
+    }
+
+    function showGetterSetter() {
+      let rectangle = {
+        height: 5,
+        set width(value) { this._width = value > 0 ? value : 10; },
+        get width() { return this._width || 10; },
+        get area() { return this.width * this.height; }
+      };
+      rectangle.width = 15;
+      log("Rectangle with Getter/Setter", {
+        width: rectangle.width,
+        height: rectangle.height,
+        area: rectangle.area
+      });
+    }
+  </script>
+
+  <style>
+    .btn {
+      background: #2563eb;
+      color: white;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #1d4ed8; }
+  </style>
+</body>
+</html>

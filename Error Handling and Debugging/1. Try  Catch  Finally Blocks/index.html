@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try / Catch / Finally Demos</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; padding: 20px; }
+    h1 { color: #2c3e50; }
+    section { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    button { padding: 10px 15px; background: #3498db; border: none; color: white; font-weight: bold; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #2980b9; }
+    pre { background: #1e272e; color: #d2dae2; padding: 10px; border-radius: 6px; white-space: pre-wrap; word-wrap: break-word; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>🎯 Try / Catch / Finally Interactive Demos</h1>
+
+  <!-- Basic Try/Catch -->
+  <section>
+    <h2>1. Basic Try/Catch</h2>
+    <button onclick="basicTryCatchDemo()">Run Demo</button>
+    <pre id="output1"></pre>
+  </section>
+
+  <!-- Try/Catch/Finally -->
+  <section>
+    <h2>2. Try/Catch/Finally</h2>
+    <button onclick="tryCatchFinallyDemo()">Run Demo</button>
+    <pre id="output2"></pre>
+  </section>
+
+  <!-- Nested Try/Catch -->
+  <section>
+    <h2>3. Nested Try/Catch</h2>
+    <button onclick="nestedTryCatchDemo()">Run Demo</button>
+    <pre id="output3"></pre>
+  </section>
+
+  <!-- Example with Error -->
+  <section>
+    <h2>4. Example with Throw</h2>
+    <button onclick="throwErrorDemo()">Run Demo</button>
+    <pre id="output4"></pre>
+  </section>
+
+  <script>
+    // Dummy risky operation
+    function someRiskyOperation() {
+      if (Math.random() > 0.5) throw new Error("Random failure!");
+      return "Success!";
+    }
+
+    // Dummy resource handling
+    function acquireResource() { return "ResourceObject"; }
+    function processWithResource(r) { if(Math.random() > 0.5) throw new Error("Processing failed"); return "Processed " + r; }
+    function releaseResource(r) { return "Released"; }
+
+    // 1. Basic Try/Catch
+    function basicTryCatchDemo() {
+      let output = "";
+      try {
+        let result = someRiskyOperation();
+        output += "Operation successful: " + result;
+      } catch (error) {
+        output += "An error occurred: " + error.message;
+      }
+      document.getElementById("output1").textContent = output;
+    }
+
+    // 2. Try/Catch/Finally
+    function tryCatchFinallyDemo() {
+      let output = "";
+      let resource = null;
+      try {
+        resource = acquireResource();
+        let result = processWithResource(resource);
+        output += "Processing completed: " + result;
+      } catch (error) {
+        output += "Error during processing: " + error.message + "\n";
+        output += "Error stack: " + error.stack;
+      } finally {
+        if (resource) {
+          releaseResource(resource);
+          output += "\nResource cleaned up";
+        }
+        output += "\nFinally block executed";
+      }
+      document.getElementById("output2").textContent = output;
+    }
+
+    // 3. Nested Try/Catch
+    function nestedTryCatchDemo() {
+      let output = "";
+      try {
+        output += "Outer try block\n";
+        try {
+          output += "Inner try block\n";
+          throw new Error("Inner error");
+        } catch (innerError) {
+          output += "Inner catch: " + innerError.message + "\n";
+          throw new Error("Re-thrown from inner catch");
+        }
+      } catch (outerError) {
+        output += "Outer catch: " + outerError.message;
+      }
+      document.getElementById("output3").textContent = output;
+    }
+
+    // 4. Example with Throw
+    function throwErrorDemo() {
+      let output = "";
+      try {
+        let result = 10 / 0; // JS gives Infinity, not error
+        output += "Result: " + result + "\n";
+        throw new Error("Something went wrong!");
+      } catch (error) {
+        output += "Caught an error: " + error.message;
+      } finally {
+        output += "\nThis block always executes.";
+      }
+      document.getElementById("output4").textContent = output;
+    }
+  </script>
+
+</body>
+</html>

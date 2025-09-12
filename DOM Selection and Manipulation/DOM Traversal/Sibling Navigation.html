@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Siblings Traversal</title>
+  <style>
+    .container {
+      border: 2px solid #333;
+      padding: 10px;
+      margin: 20px 0;
+    }
+    .container div {
+      padding: 8px;
+      margin: 4px 0;
+      border: 1px dashed #666;
+    }
+    .current-element {
+      background-color: #ffecb3;
+    }
+  </style>
+</head>
+<body>
+  <h2>DOM Siblings Traversal Demo</h2>
+
+  <div class="container">
+    <div class="sibling">Sibling 1</div>
+    <div class="sibling current-element">Current Element</div>
+    <div class="sibling">Sibling 2</div>
+    <div class="sibling special">Sibling 3 (Special)</div>
+    <div class="sibling">Sibling 4</div>
+  </div>
+
+  <button id="btnNext">Get Next Sibling</button>
+  <button id="btnPrev">Get Previous Sibling</button>
+  <button id="btnAllSiblings">Get All Siblings</button>
+  <button id="btnFindSibling">Find Special Sibling</button>
+
+  <script>
+    const element = document.querySelector('.current-element');
+
+    // Get next sibling element
+    document.querySelector('#btnNext').addEventListener('click', () => {
+      const nextSibling = element.nextElementSibling;
+      console.log('Next sibling:', nextSibling);
+    });
+
+    // Get previous sibling element
+    document.querySelector('#btnPrev').addEventListener('click', () => {
+      const prevSibling = element.previousElementSibling;
+      console.log('Previous sibling:', prevSibling);
+    });
+
+    // Get all siblings
+    function getSiblings(el) {
+      const siblings = [];
+      let sibling = el.parentNode.firstElementChild;
+      while (sibling) {
+        if (sibling !== el) {
+          siblings.push(sibling);
+        }
+        sibling = sibling.nextElementSibling;
+      }
+      return siblings;
+    }
+
+    document.querySelector('#btnAllSiblings').addEventListener('click', () => {
+      const siblings = getSiblings(element);
+      console.log('All siblings:', siblings);
+    });
+
+    // Find sibling by selector
+    function findSibling(el, selector) {
+      const siblings = getSiblings(el);
+      return siblings.find(sibling => sibling.matches(selector));
+    }
+
+    document.querySelector('#btnFindSibling').addEventListener('click', () => {
+      const special = findSibling(element, '.special');
+      console.log('Found special sibling:', special);
+    });
+  </script>
+</body>
+</html>

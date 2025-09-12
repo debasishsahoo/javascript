@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Management System</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f5f6fa; }
+    h2 { margin-top: 30px; color: #2c3e50; }
+    section { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    form { margin-bottom: 15px; }
+    label { display: block; margin-top: 8px; font-weight: bold; }
+    input, select, textarea, button { padding: 6px; margin-top: 4px; width: 100%; max-width: 400px; }
+    button { background: #3498db; border: none; color: #fff; cursor: pointer; border-radius: 4px; }
+    button:hover { background: #2980b9; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #ecf0f1; }
+    .flex { display: flex; gap: 20px; flex-wrap: wrap; }
+    .stats p { margin: 4px 0; }
+    textarea { height: 120px; }
+  </style>
+</head>
+<body>
+  <h1>🎓 Student Management System</h1>
+
+  <!-- Add Student -->
+  <section>
+    <h2>Add Student</h2>
+    <form id="studentForm">
+      <label>Name: <input type="text" id="studentName" required></label>
+      <label>Email: <input type="email" id="studentEmail" required></label>
+      <label>Major: 
+        <select id="studentMajor" required>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Physics">Physics</option>
+          <option value="English">English</option>
+        </select>
+      </label>
+      <button type="submit">Add Student</button>
+    </form>
+    <div id="studentList"></div>
+  </section>
+
+  <!-- Assign Grade -->
+  <section>
+    <h2>Assign Grade</h2>
+    <form id="gradeForm">
+      <label>Student: 
+        <select id="gradeStudent" required></select>
+      </label>
+      <label>Course:
+        <select id="gradeCourse" required></select>
+      </label>
+      <label>Grade (0-100): <input type="number" id="gradeValue" min="0" max="100" required></label>
+      <button type="submit">Assign Grade</button>
+    </form>
+  </section>
+
+  <!-- Transcripts -->
+  <section>
+    <h2>Student Transcripts</h2>
+    <div id="transcripts"></div>
+  </section>
+
+  <!-- Filters -->
+  <section>
+    <h2>Filter Students</h2>
+    <form id="filterForm">
+      <label>Major:
+        <select id="filterMajor">
+          <option value="">Any</option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Physics">Physics</option>
+          <option value="English">English</option>
+        </select>
+      </label>
+      <label>Minimum GPA: <input type="number" id="filterGPA" step="0.1" min="0" max="4"></label>
+      <label>Minimum Credits: <input type="number" id="filterCredits" min="0"></label>
+      <button type="submit">Apply Filters</button>
+    </form>
+    <div id="filteredResults"></div>
+  </section>
+
+  <!-- Statistics -->
+  <section>
+    <h2>Class Statistics</h2>
+    <div class="stats" id="classStats"></div>
+  </section>
+
+  <!-- JSON Export/Import -->
+  <section>
+    <h2>Export / Import Data (JSON)</h2>
+    <button id="exportBtn">Export to JSON</button>
+    <textarea id="jsonOutput" placeholder="JSON data here..."></textarea>
+    <button id="importBtn">Import from JSON</button>
+  </section>
+
+  <script>
+    // StudentManager class (simplified for UI use)
+    class StudentManager {
+      constructor() {
+        this.students = [];
+        this.courses = [
+          { id: 'CS101', name: 'Intro to Programming', credits: 3 },
+          { id: 'MATH201', name: 'Calculus I', credits: 4 },
+          { id: 'ENG102', name: 'English Composition', credits: 3 },
+          { id: 'PHYS151', name: 'General Physics', credits: 4 }
+        ];
+      }
+      generateStudentId() {
+        return "STU" + Date.now().toString().slice(-6) + Math.floor(Math.random()*1000);
+      }
+      addStudent(data) {
+        const student = { id: this.generateStudentId(), name: data.name, email: data.email, major: data.major,
+          enrollmentDate: new Date(), grades: {}, gpa: 0, credits: 0 };
+        this.students.push(student); return student;
+      }
+      findStudent(id) { return this.students.find(s=>s.id===id); }
+      calculateLetterGrade(g) {
+        if (g>=97) return 'A+'; if (g>=93) return 'A'; if (g>=90) return 'A-';
+        if (g>=87) return 'B+'; if (g>=83) return 'B'; if (g>=80) return 'B-';
+        if (g>=77) return 'C+'; if (g>=73) return 'C'; if (g>=70) return 'C-';
+        if (g>=67) return 'D+'; if (g>=63) return 'D'; if (g>=60) return 'D-';
+        return 'F';
+      }
+      getGradePoints(l) {
+        return { 'A+':4,'A':4,'A-':3.7,'B+':3.3,'B':3,'B-':2.7,'C+':2.3,'C':2,'C-':1.7,'D+':1.3,'D':1,'D-':0.7,'F':0}[l]||0;
+      }
+      updateStudentGPA(s) {
+        const grades=Object.values(s.grades);
+        let tp=0,tc=0;
+        grades.forEach(g=>{tp+=this.getGradePoints(g.letterGrade)*g.credits; tc+=g.credits;});
+        s.gpa=tc?(tp/tc).toFixed(2):0; s.credits=tc;
+      }
+      addGrade(sid,cid,grade){
+        const s=this.findStudent(sid); const c=this.courses.find(x=>x.id===cid);
+        if(!s||!c) return;
+        s.grades[cid]={courseName:c.name,grade,credits:c.credits,letterGrade:this.calculateLetterGrade(grade)};
+        this.updateStudentGPA(s);
+      }
+      getTranscript(sid){
+        const s=this.findStudent(sid);
+        if(!s) return null;
+        return {studentInfo:{...s}, courses:Object.entries(s.grades).map(([cid,g])=>({...g,courseId:cid}))};
+      }
+      filterStudents({major,minGPA,minCredits}){
+        return this.students.filter(s=>{
+          if(major && s.major!==major) return false;
+          if(minGPA && parseFloat(s.gpa)<minGPA) return false;
+          if(minCredits && s.credits<minCredits) return false;
+          return true;
+        });
+      }
+      getClassStatistics(){
+        const gpas=this.students.map(s=>parseFloat(s.gpa)).filter(g=>g>0);
+        const credits=this.students.map(s=>s.credits).filter(c=>c>0);
+        return { totalStudents:this.students.length,
+          averageGPA:gpas.length?(gpas.reduce((a,b)=>a+b,0)/gpas.length).toFixed(2):0,
+          highestGPA:gpas.length?Math.max(...gpas).toFixed(2):0,
+          lowestGPA:gpas.length?Math.min(...gpas).toFixed(2):0,
+          averageCredits:credits.length?Math.round(credits.reduce((a,b)=>a+b,0)/credits.length):0 };
+      }
+      exportToJSON(){
+        return JSON.stringify({students:this.students,courses:this.courses},null,2);
+      }
+      importFromJSON(json){
+        const d=JSON.parse(json);
+        if(Array.isArray(d.students)) this.students=d.students.map(s=>({...s,enrollmentDate:new Date(s.enrollmentDate)}));
+        if(Array.isArray(d.courses)) this.courses=d.courses;
+      }
+    }
+
+    // App logic
+    const manager=new StudentManager();
+
+    // DOM references
+    const studentForm=document.getElementById('studentForm');
+    const studentList=document.getElementById('studentList');
+    const gradeForm=document.getElementById('gradeForm');
+    const gradeStudent=document.getElementById('gradeStudent');
+    const gradeCourse=document.getElementById('gradeCourse');
+    const transcriptsDiv=document.getElementById('transcripts');
+    const filterForm=document.getElementById('filterForm');
+    const filteredResults=document.getElementById('filteredResults');
+    const classStatsDiv=document.getElementById('classStats');
+    const exportBtn=document.getElementById('exportBtn');
+    const importBtn=document.getElementById('importBtn');
+    const jsonOutput=document.getElementById('jsonOutput');
+
+    // Populate courses dropdown
+    function refreshCourses(){
+      gradeCourse.innerHTML=manager.courses.map(c=>`<option value="${c.id}">${c.id} - ${c.name}</option>`).join('');
+    }
+    refreshCourses();
+
+    // Add student
+    studentForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const s=manager.addStudent({name:studentName.value,email:studentEmail.value,major:studentMajor.value});
+      studentForm.reset(); refreshStudents(); refreshTranscripts(); refreshStats();
+    });
+
+    // Refresh student list + grade dropdown
+    function refreshStudents(){
+      studentList.innerHTML='<h3>Current Students</h3>'+manager.students.map(s=>`<p>${s.name} (${s.id}) - ${s.major} | GPA: ${s.gpa}</p>`).join('');
+      gradeStudent.innerHTML=manager.students.map(s=>`<option value="${s.id}">${s.name} (${s.id})</option>`).join('');
+    }
+
+    // Assign grade
+    gradeForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      manager.addGrade(gradeStudent.value,gradeCourse.value,parseFloat(gradeValue.value));
+      gradeForm.reset(); refreshTranscripts(); refreshStats();
+    });
+
+    // Refresh transcripts
+    function refreshTranscripts(){
+      transcriptsDiv.innerHTML=manager.students.map(s=>{
+        const t=manager.getTranscript(s.id);
+        return `<h3>${t.studentInfo.name} (GPA: ${t.studentInfo.gpa}, Credits: ${t.studentInfo.credits})</h3>
+          <table><tr><th>Course</th><th>Grade</th><th>Letter</th><th>Credits</th></tr>
+          ${t.courses.map(c=>`<tr><td>${c.courseName}</td><td>${c.grade}</td><td>${c.letterGrade}</td><td>${c.credits}</td></tr>`).join('')}
+          </table>`;
+      }).join('');
+    }
+
+    // Filter
+    filterForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const major=filterMajor.value||null;
+      const minGPA=parseFloat(filterGPA.value)||null;
+      const minCredits=parseInt(filterCredits.value)||null;
+      const results=manager.filterStudents({major,minGPA,minCredits});
+      filteredResults.innerHTML='<h3>Filtered Students</h3>'+results.map(s=>`<p>${s.name} - GPA: ${s.gpa}, Credits: ${s.credits}</p>`).join('');
+    });
+
+    // Stats
+    function refreshStats(){
+      const s=manager.getClassStatistics();
+      classStatsDiv.innerHTML=`<p>Total Students: ${s.totalStudents}</p>
+        <p>Average GPA: ${s.averageGPA}</p>
+        <p>Highest GPA: ${s.highestGPA}</p>
+        <p>Lowest GPA: ${s.lowestGPA}</p>
+        <p>Average Credits: ${s.averageCredits}</p>`;
+    }
+
+    // Export/Import
+    exportBtn.addEventListener('click',()=>{ jsonOutput.value=manager.exportToJSON(); });
+    importBtn.addEventListener('click',()=>{ 
+      try{ manager.importFromJSON(jsonOutput.value); refreshStudents(); refreshTranscripts(); refreshStats(); alert('Import successful'); }
+      catch(err){ alert('Invalid JSON'); }
+    });
+  </script>
+</body>
+</html>

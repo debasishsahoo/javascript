@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTMLCollection Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .btn { padding: 8px 15px; margin: 5px; border: 1px solid #333; cursor: pointer; }
+    .highlight { background-color: yellow; }
+  </style>
+</head>
+<body>
+  <h1>HTMLCollection Demo</h1>
+
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+  <p>Paragraph 3</p>
+
+  <button class="btn">Button 1</button>
+  <button class="btn">Button 2</button>
+  <button class="btn">Button 3</button>
+
+  <form>
+    <label><input type="radio" name="gender" value="male"> Male</label>
+    <label><input type="radio" name="gender" value="female"> Female</label>
+  </form>
+
+  <div>Div 1</div>
+  <div>Div 2</div>
+
+  <button id="addButton">Add New Button</button>
+
+  <script>
+    // --- Get elements by class name ---
+    const buttons = document.getElementsByClassName('btn');
+    console.log("HTMLCollection of buttons:", buttons);
+
+    // --- Get elements by tag name ---
+    const paragraphs = document.getElementsByTagName('p');
+    const divs = document.getElementsByTagName('div');
+    console.log("Paragraphs:", paragraphs);
+    console.log("Divs:", divs);
+
+    // --- Get elements by name attribute ---
+    const radios = document.getElementsByName('gender');
+    console.log("Radio buttons:", radios);
+
+    // --- Iterate over HTMLCollection ---
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', () => {
+        alert(`You clicked: ${buttons[i].textContent}`);
+        buttons[i].classList.toggle('highlight');
+      });
+    }
+
+    // --- HTMLCollections are live ---
+    const addButton = document.getElementById('addButton');
+    addButton.addEventListener('click', () => {
+      const newBtn = document.createElement('button');
+      newBtn.textContent = `Button ${buttons.length + 1}`;
+      newBtn.className = 'btn';
+      document.body.appendChild(newBtn);
+
+      // The HTMLCollection automatically updates
+      console.log("Updated buttons collection:", buttons);
+
+      // Add event listener to new button
+      buttons[buttons.length - 1].addEventListener('click', () => {
+        alert(`You clicked: ${buttons[buttons.length - 1].textContent}`);
+        buttons[buttons.length - 1].classList.toggle('highlight');
+      });
+    });
+  </script>
+</body>
+</html>

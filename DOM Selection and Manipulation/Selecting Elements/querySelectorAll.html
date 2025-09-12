@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>querySelectorAll Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .btn { padding: 8px 15px; margin: 5px; border: 1px solid #333; cursor: pointer; }
+    .btn.active { background-color: #4CAF50; color: white; }
+    nav ul { list-style: none; padding: 0; }
+    nav ul li { display: inline; margin-right: 10px; }
+    .item { padding: 5px; margin: 2px; border: 1px solid #ccc; display: inline-block; }
+    .active { background-color: #ffd700; }
+  </style>
+</head>
+<body>
+  <h1>querySelectorAll Demo</h1>
+
+  <p>This is paragraph 1.</p>
+  <p>This is paragraph 2.</p>
+
+  <button class="btn">Button 1</button>
+  <button class="btn active">Button 2 (Active)</button>
+  <button class="btn">Button 3</button>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div>
+    <div class="item">Item 1</div>
+    <div class="item active">Item 2 (Active)</div>
+    <div class="item">Item 3</div>
+  </div>
+
+  <script>
+    // --- Select all elements with a class or tag ---
+    const allButtons = document.querySelectorAll('.btn');
+    const allParagraphs = document.querySelectorAll('p');
+
+    // --- Complex selections ---
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const activeItems = document.querySelectorAll('.item.active');
+
+    // --- Convert NodeList to Array ---
+    const buttonsArray = Array.from(allButtons);
+    const buttonsArray2 = [...allButtons];
+
+    console.log("All Buttons:", allButtons);
+    console.log("All Paragraphs:", allParagraphs);
+    console.log("Nav Links:", navLinks);
+    console.log("Active Items:", activeItems);
+    console.log("Buttons Array:", buttonsArray);
+    console.log("Buttons Array2:", buttonsArray2);
+
+    // --- Iterate over NodeList and add event listeners ---
+    function handleClick(event) {
+      alert(`You clicked: ${event.target.textContent}`);
+      event.target.classList.toggle('active'); // Toggle active class on click
+    }
+
+    allButtons.forEach(button => {
+      button.addEventListener('click', handleClick);
+    });
+
+    // Example: iterate over active items
+    activeItems.forEach(item => {
+      item.style.border = "2px solid red";
+    });
+  </script>
+</body>
+</html>

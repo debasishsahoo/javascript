@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSON Demo App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .buttons {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .buttons button {
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .buttons button:hover {
+      background: #0056b3;
+    }
+    .output {
+      flex: 2;
+      background: #fff;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      max-height: 600px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    .log-entry {
+      border-bottom: 1px solid #ddd;
+      padding: 5px 0;
+    }
+    .log-entry:last-child {
+      border-bottom: none;
+    }
+    .log-title {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>JSON Interactive Demo</h1>
+  <div class="container">
+    <div class="buttons">
+      <button onclick="demoParse()">JSON.parse()</button>
+      <button onclick="demoStringify()">JSON.stringify()</button>
+      <button onclick="demoCustomStringify()">Custom Stringify</button>
+      <button onclick="demoFilteredStringify()">Filtered Stringify</button>
+      <button onclick="demoDeepCopy()">Deep Copy</button>
+      <button onclick="demoValidation()">Validation</button>
+      <button onclick="demoArrayFilter()">Array of Objects</button>
+      <button onclick="demoSafeParse()">Safe Parse</button>
+      <button onclick="demoSafeStringify()">Safe Stringify</button>
+      <button onclick="demoApiResponse()">API Response</button>
+      <button onclick="demoLimitations()">JSON Limitations</button>
+      <button onclick="clearLogs()">Clear Logs</button>
+    </div>
+    <div class="output" id="output"></div>
+  </div>
+
+  <script>
+    const output = document.getElementById("output");
+
+    function log(title, data) {
+      const entry = document.createElement("div");
+      entry.className = "log-entry";
+      entry.innerHTML = `<div class="log-title">${title}</div>
+                         <div>${typeof data === "object" 
+                                ? JSON.stringify(data, null, 2) 
+                                : data}</div>`;
+      output.appendChild(entry);
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function clearLogs() {
+      output.innerHTML = "";
+    }
+
+    // ===== JSON DEMO FUNCTIONS =====
+
+    function demoParse() {
+      let jsonString = `{
+        "name": "Alice Johnson",
+        "age": 28,
+        "isStudent": false,
+        "address": {"city": "Seattle"},
+        "hobbies": ["photography","hiking"]
+      }`;
+      try {
+        let person = JSON.parse(jsonString);
+        log("Parsed object", person);
+      } catch (err) {
+        log("Parse error", err.message);
+      }
+    }
+
+    function demoStringify() {
+      let student = { id: 1, name: "Bob", active: true };
+      log("Stringify", JSON.stringify(student));
+      log("Pretty JSON", JSON.stringify(student, null, 2));
+    }
+
+    function demoCustomStringify() {
+      let student = {
+        name: "Bob",
+        grades: [80, 90],
+        graduationDate: new Date("2024-05-15")
+      };
+      let custom = JSON.stringify(student, (k, v) => {
+        if (v instanceof Date) return v.toISOString();
+        if (k === "grades") return v.map(g => "Grade: " + g);
+        return v;
+      }, 2);
+      log("Custom JSON", custom);
+    }
+
+    function demoFilteredStringify() {
+      let student = { name: "Alice", age: 25, active: true, city: "Boston" };
+      let filtered = JSON.stringify(student, ["name", "active"], 2);
+      log("Filtered JSON", filtered);
+    }
+
+    function demoDeepCopy() {
+      let original = { user: { name: "Alice" }, theme: "dark" };
+      let copy = JSON.parse(JSON.stringify(original));
+      copy.user.name = "Alice Johnson";
+      log("Original", original);
+      log("Deep Copy", copy);
+    }
+
+    function demoValidation() {
+      function validateUserData(jsonStr) {
+        try {
+          let data = JSON.parse(jsonStr);
+          if (!data.name || !data.email) throw new Error("Missing fields");
+          return { name: data.name.trim(), email: data.email.toLowerCase().trim() };
+        } catch (err) {
+          return { error: err.message };
+        }
+      }
+      log("Valid Data", validateUserData('{"name":" John ","email":"JOHN@EXAMPLE.COM"}'));
+      log("Invalid Data", validateUserData('{"name":""}'));
+    }
+
+    function demoArrayFilter() {
+      let jsonArray = `[{"id":1,"name":"A","inStock":true},{"id":2,"name":"B","inStock":false}]`;
+      let products = JSON.parse(jsonArray);
+      let available = products.filter(p => p.inStock);
+      log("Available Products", available);
+    }
+
+    function demoSafeParse() {
+      function safeParse(json, def = {}) {
+        try { return JSON.parse(json); }
+        catch { return def; }
+      }
+      log("Safe Parse (valid)", safeParse('{"ok":true}'));
+      log("Safe Parse (invalid)", safeParse('{"bad json"}'));
+    }
+
+    function demoSafeStringify() {
+      function safeStringify(obj, def = "{}") {
+        try { return JSON.stringify(obj); }
+        catch { return def; }
+      }
+      let circular = {};
+      circular.self = circular;
+      log("Safe Stringify", safeStringify(circular, '"error"'));
+    }
+
+    function demoApiResponse() {
+      function processApiResponse(json) {
+        try {
+          let data = JSON.parse(json);
+          return data.success ? data.result : "Error: " + data.error;
+        } catch { return "Invalid JSON"; }
+      }
+      log("API Success", processApiResponse('{"success":true,"result":{"id":1}}'));
+      log("API Error", processApiResponse('{"success":false,"error":"Not found"}'));
+    }
+
+    function demoLimitations() {
+      let complex = { date: new Date(), regex: /test/g, func: ()=>{}, undef: undefined };
+      log("Original", complex);
+      let json = JSON.parse(JSON.stringify(complex));
+      log("After JSON round-trip", json);
+    }
+  </script>
+</body>
+</html>

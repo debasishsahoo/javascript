@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Style Manipulation</title>
+  <style>
+    #my-element {
+      width: 300px;
+      height: 100px;
+      border: 2px solid #333;
+      margin: 20px 0;
+      --primary-color: #e74c3c; /* default CSS variable */
+    }
+  </style>
+</head>
+<body>
+  <h2>DOM Style Manipulation Demo</h2>
+
+  <div id="my-element">Styled Element</div>
+
+  <button id="btnDirectStyle">Direct Style</button>
+  <button id="btnMultipleStyle">Multiple Styles</button>
+  <button id="btnCSSVar">Set CSS Variable</button>
+  <button id="btnComputedStyle">Get Computed Style</button>
+
+  <script>
+    const element = document.querySelector('#my-element');
+
+    // Direct style modification
+    document.querySelector('#btnDirectStyle').addEventListener('click', () => {
+      element.style.color = 'red';
+      element.style.backgroundColor = 'blue';
+      element.style.fontSize = '16px';
+      element.style.marginTop = '20px';
+      element.style.borderRadius = '10px'; // camelCase
+      element.style.textAlign = 'center';
+      console.log('Direct styles applied');
+    });
+
+    // Setting multiple styles at once
+    document.querySelector('#btnMultipleStyle').addEventListener('click', () => {
+      Object.assign(element.style, {
+        color: 'white',
+        backgroundColor: 'black',
+        padding: '10px',
+        borderRadius: '5px'
+      });
+      console.log('Multiple styles applied');
+    });
+
+    // CSS custom properties (variables)
+    document.querySelector('#btnCSSVar').addEventListener('click', () => {
+      element.style.setProperty('--primary-color', '#3498db');
+      console.log('CSS variable --primary-color set to', element.style.getPropertyValue('--primary-color'));
+    });
+
+    // Getting computed styles
+    document.querySelector('#btnComputedStyle').addEventListener('click', () => {
+      const styles = window.getComputedStyle(element);
+      console.log('Computed color:', styles.color);
+      console.log('Computed font-size:', styles.getPropertyValue('font-size'));
+      console.log('Computed --primary-color:', styles.getPropertyValue('--primary-color'));
+    });
+  </script>
+</body>
+</html>

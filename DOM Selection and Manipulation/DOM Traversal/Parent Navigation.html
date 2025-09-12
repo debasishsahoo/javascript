@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Parent & Ancestor Traversal</title>
+  <style>
+    .ancestor-class {
+      border: 2px solid #333;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .child-element {
+      border: 1px dashed #666;
+      padding: 5px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>DOM Parent & Ancestor Traversal Demo</h2>
+
+  <div class="ancestor-class">
+    Ancestor Div
+    <div class="parent">
+      Parent Div
+      <div class="child-element">Target Child Element</div>
+    </div>
+  </div>
+
+  <form id="demo-form">
+    <div class="child-element">Child inside Form</div>
+  </form>
+
+  <button id="btnParent">Get Direct Parent</button>
+  <button id="btnClosestAncestor">Find Closest Ancestor</button>
+  <button id="btnAllAncestors">Get All Ancestors</button>
+
+  <script>
+    const element = document.querySelector('.child-element');
+
+    // Get direct parent
+    document.querySelector('#btnParent').addEventListener('click', () => {
+      const parent = element.parentNode;
+      const parentElement = element.parentElement;
+      console.log('parentNode:', parent);
+      console.log('parentElement:', parentElement);
+    });
+
+    // Find closest ancestor by selector
+    document.querySelector('#btnClosestAncestor').addEventListener('click', () => {
+      const ancestor = element.closest('.ancestor-class');
+      const form = element.closest('form');
+      console.log('Closest .ancestor-class:', ancestor);
+      console.log('Closest containing form:', form);
+    });
+
+    // Get all ancestors
+    document.querySelector('#btnAllAncestors').addEventListener('click', () => {
+      function getAncestors(el) {
+        const ancestors = [];
+        let current = el.parentElement;
+        while (current) {
+          ancestors.push(current);
+          current = current.parentElement;
+        }
+        return ancestors;
+      }
+      const ancestors = getAncestors(element);
+      console.log('All ancestors:', ancestors);
+    });
+  </script>
+</body>
+</html>

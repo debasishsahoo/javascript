@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error Types in JavaScript</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f7fa; padding: 20px; }
+    h1 { color: #2c3e50; }
+    section { background: #fff; padding: 20px; margin: 15px 0; border-radius: 8px;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    button { padding: 8px 14px; margin-top: 10px; border: none;
+             background: #3498db; color: #fff; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #2980b9; }
+    pre { background: #1e272e; color: #d2dae2; padding: 10px; border-radius: 6px;
+          margin-top: 10px; min-height: 50px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1> JavaScript Error Types Demo</h1>
+
+  <section>
+    <h2>1. ReferenceError</h2>
+    <button onclick="runReferenceError()">Run</button>
+    <pre id="out1"></pre>
+  </section>
+
+  <section>
+    <h2>2. TypeError</h2>
+    <button onclick="runTypeError()">Run</button>
+    <pre id="out2"></pre>
+  </section>
+
+  <section>
+    <h2>3. SyntaxError</h2>
+    <button onclick="runSyntaxError()">Run</button>
+    <pre id="out3"></pre>
+  </section>
+
+  <section>
+    <h2>4. RangeError</h2>
+    <button onclick="runRangeError()">Run</button>
+    <pre id="out4"></pre>
+  </section>
+
+  <section>
+    <h2

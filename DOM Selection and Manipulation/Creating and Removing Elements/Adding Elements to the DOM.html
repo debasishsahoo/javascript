@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Element Insertion Demo</title>
+  <style>
+    .container, .target {
+      border: 2px solid #333;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .reference {
+      color: red;
+      font-weight: bold;
+    }
+    p {
+      margin: 5px 0;
+      padding: 3px;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h2>DOM Element Insertion Demo</h2>
+
+  <div class="container">
+    Container
+    <p class="reference">Reference Paragraph</p>
+  </div>
+
+  <div class="target">Target Element</div>
+
+  <button id="btnAppendChild">Append Child</button>
+  <button id="btnInsertBefore">Insert Before Reference</button>
+  <button id="btnPrepend">Prepend</button>
+  <button id="btnAppend">Append</button>
+  <button id="btnInsertAdjacent">Insert Adjacent Elements</button>
+
+  <script>
+    const container = document.querySelector('.container');
+    const targetElement = document.querySelector('.target');
+
+    // Utility function to create a new paragraph
+    function createParagraph(text) {
+      const p = document.createElement('p');
+      p.textContent = text;
+      return p;
+    }
+
+    // Append as last child
+    document.querySelector('#btnAppendChild').addEventListener('click', () => {
+      const newElement = createParagraph('Appended with appendChild');
+      container.appendChild(newElement);
+    });
+
+    // Insert before specific element
+    document.querySelector('#btnInsertBefore').addEventListener('click', () => {
+      const referenceElement = document.querySelector('.reference');
+      const newElement = createParagraph('Inserted before reference');
+      container.insertBefore(newElement, referenceElement);
+    });
+
+    // Prepend (first child)
+    document.querySelector('#btnPrepend').addEventListener('click', () => {
+      const newElement = createParagraph('Prepended with prepend');
+      container.prepend(newElement);
+    });
+
+    // Append (last child)
+    document.querySelector('#btnAppend').addEventListener('click', () => {
+      const newElement = createParagraph('Appended with append');
+      container.append(newElement);
+    });
+
+    // Insert adjacent elements
+    document.querySelector('#btnInsertAdjacent').addEventListener('click', () => {
+      const before = createParagraph('Before target (beforebegin)');
+      const afterBegin = createParagraph('First child of target (afterbegin)');
+      const beforeEnd = createParagraph('Last child of target (beforeend)');
+      const after = createParagraph('After target (afterend)');
+
+      targetElement.insertAdjacentElement('beforebegin', before);
+      targetElement.insertAdjacentElement('afterbegin', afterBegin);
+      targetElement.insertAdjacentElement('beforeend', beforeEnd);
+      targetElement.insertAdjacentElement('afterend', after);
+    });
+  </script>
+</body>
+</html>
